@@ -124,7 +124,7 @@ public class ProjectData{
         
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
-            pstmt.setInt(1, Integer.parseInt(projectId));
+            pstmt.setInt(1, projectId);
             
             ResultSet result = pstmt.executeQuery();
             
