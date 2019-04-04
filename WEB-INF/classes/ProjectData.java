@@ -52,6 +52,38 @@ public class ProjectData{
         return vec;
     }
     
+    public static Vector<ProductData> getActiveProjectList(Connection connection){
+        
+        Vector<ProjectData> vec = new Vector<ProjectData>();
+        
+        //ESCRIBIR SQL CON LA CONDICION DE QUE ESTE ACTIVO
+        
+        String sql = "";
+        System.out.println("getActiveProjectList: " + sql);
+        
+        try {
+            Statement statement=connection.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+            
+            while(result.next()) {
+                
+                // CAMBIAR! SEGUN LAS BD
+                
+                ProjectData project = new ProjectData(
+                    Integer.parseInt(result.getString("projectId"))
+                );
+                
+                vec.addElement(project);
+            }
+            
+        } catch(SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error in getActiveProjectList: " + sql + " Exception: " + e);
+        }
+        return vec;
+    }
+    
+    
     public static Vector<ProjectData> getClientProjectList(Connection connection, int clientId){
         
         Vector<ProjectData> vec = new Vector<ProjectData>();
