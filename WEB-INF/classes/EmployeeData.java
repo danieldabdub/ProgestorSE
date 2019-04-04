@@ -10,14 +10,14 @@ public class EmployeeData{
     
     // Poner aqui los nombres que finalmente se usen.
     
-    int employeeId;
+    String employeeId;
     String firstName;
     String lastName;
     
     
     // Primer Constructor
     //PONER TODOS LOS QUE FALTAN ABAJO
-    EmployeeData (int employeeId){
+    EmployeeData (String employeeId){
         this.employeeId = employeeId;
     }
     
@@ -28,7 +28,7 @@ public class EmployeeData{
         //ESCRIBIR SQL
         
         String sql = "";
-        System.out.println("getEmployeeList: "+ sql);
+        System.out.println("getEmployeeList: " + sql);
         
         try {
             Statement statement=connection.createStatement();
@@ -39,7 +39,7 @@ public class EmployeeData{
                 // CAMBIAR! SEGUN LAS BD
                 
                 EmployeeData employee = new EmployeeData(
-                    Integer.parseInt(result.getString("employeeId"))
+                    result.getString("employeeId")
                 );
                 
                 vec.addElement(employee);
@@ -52,7 +52,7 @@ public class EmployeeData{
         return vec;
     }
     
-    public static Vector<EmployeeData> getProjectEmployeeList(Connection connection, int projectId){
+    public static Vector<EmployeeData> getProjectEmployeeList(Connection connection, String projectId){
         
         Vector<EmployeeData> vec = new Vector<EmployeeData>();
         
@@ -63,14 +63,14 @@ public class EmployeeData{
         
         try {
             PreparedStatement pstmt=connection.prepareStatement(sql);
-            pstmt.setInt(1, projectId);
+            pstmt.setString(1, projectId);
             
             ResultSet result = pstmt.executeQuery();
             
             while(result.next()) {
                 
                 EmployeeData employee = new EmployeeData(
-                    Integer.parseInt(result.getString("employeeId"))
+                    result.getString("employeeId")
                 );
                 vec.addElement(employee);
             }
@@ -81,7 +81,7 @@ public class EmployeeData{
         return vec;
     }
     
-    public static Vector<EmployeeData> getEmployee(Connection connection, int employeeId){
+    public static Vector<EmployeeData> getEmployee(Connection connection, String employeeId){
         
         
         //ESCRIBIR SQL!
@@ -92,14 +92,14 @@ public class EmployeeData{
         
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
-            pstmt.setInt(1, employeeId);
+            pstmt.setString(1, employeeId);
             
             ResultSet result = pstmt.executeQuery();
             
             if(result.next()){
                 employee = new EmployeeData(
                     //ME FALTARIAN COSAS AQUI!
-                    Integer.parseInt(result.getString("employeeId"))
+                    result.getString("employeeId")
                 );  
             }
             result.close();
@@ -137,7 +137,7 @@ public class EmployeeData{
         return n;
     }
     
-    public static Vector<EmployeeData> getQualifiedEmployee(Connection connection, int qualificationId){
+    public static Vector<EmployeeData> getQualifiedEmployee(Connection connection, String qualificationId){
         
         Vector<EmployeeData> vec = new Vector<EmployeeData>();
         
@@ -148,14 +148,14 @@ public class EmployeeData{
         
         try {
             PreparedStatement pstmt=connection.prepareStatement(sql);
-            pstmt.setInt(1, qualificationId);
+            pstmt.setString(1, qualificationId);
             
             ResultSet result = pstmt.executeQuery();
             
             while(result.next()) {
                 
                 EmployeeData employee = new EmployeeData(
-                    Integer.parseInt(result.getString("employeeId"))
+                    result.getString("employeeId")
                 );
                 vec.addElement(employee);
             }

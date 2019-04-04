@@ -10,14 +10,14 @@ public class ProjectData{
     
     // Poner aqui los nombres que finalmente se usen.
     
-    int projectId;
+    String projectId;
     String manager;
     String status;
     
     
     // Primer Constructor
     //PONER TODOS LOS QUE FALTAN ABAJO
-    ProjectData (int projectId){
+    ProjectData (String projectId){
         this.projectId = projectId;
     }
     
@@ -39,7 +39,7 @@ public class ProjectData{
                 // CAMBIAR! SEGUN LAS BD
                 
                 ProjectData project = new ProjectData(
-                    Integer.parseInt(result.getString("projectId"))
+                    result.getString("projectId")
                 );
                 
                 vec.addElement(project);
@@ -70,7 +70,7 @@ public class ProjectData{
                 // CAMBIAR! SEGUN LAS BD
                 
                 ProjectData project = new ProjectData(
-                    Integer.parseInt(result.getString("projectId"))
+                    result.getString("projectId")
                 );
                 
                 vec.addElement(project);
@@ -84,7 +84,7 @@ public class ProjectData{
     }
     
     
-    public static Vector<ProjectData> getClientProjectList(Connection connection, int clientId){
+    public static Vector<ProjectData> getClientProjectList(Connection connection, String clientId){
         
         Vector<ProjectData> vec = new Vector<ProjectData>();
         
@@ -95,14 +95,14 @@ public class ProjectData{
         
         try {
             PreparedStatement pstmt=connection.prepareStatement(sql);
-            pstmt.setInt(1, clientId);
+            pstmt.setString(1, clientId);
             
             ResultSet result = pstmt.executeQuery();
             
             while(result.next()) {
                 
                 ProjectData project = new ProjectData(
-                    Integer.parseInt(result.getString("projectId"))
+                    result.getString("projectId")
                 );
                 vec.addElement(project);
             }
@@ -113,7 +113,7 @@ public class ProjectData{
         return vec;
     }
     
-    public static Vector<ProjectData> getProject(Connection connection, int projectId){
+    public static Vector<ProjectData> getProject(Connection connection, String projectId){
         
         
         //ESCRIBIR SQL!
@@ -124,14 +124,14 @@ public class ProjectData{
         
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
-            pstmt.setInt(1, projectId);
+            pstmt.setString(1, projectId);
             
             ResultSet result = pstmt.executeQuery();
             
             if(result.next()){
                 project = new ProjectData(
                     //ME FALTARIAN COSAS AQUI!
-                    Integer.parseInt(result.getString("projectId"))
+                    result.getString("projectId")
                 );  
             }
             result.close();
@@ -155,7 +155,7 @@ public class ProjectData{
         try {
             PreparedStatement stmtUpdate= connection.prepareStatement(sql);
             
-            stmtUpdate.setString(1,product.productName);
+            stmtUpdate.setString(1,project.projectId);
 //            stmtUpdate.setInt(2,product.supplierId);
 //            stmtUpdate.setFloat(3,product.unitPrice);
 //            stmtUpdate.setString(4,product.productId); CAMBIAR ESTO!
