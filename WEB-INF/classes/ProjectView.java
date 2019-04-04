@@ -1,46 +1,72 @@
 import java.util.Vector;
 
 public class ProjectView {
-    public static String projectHeader(ProjectData project) {
+    public static String projectInfo(ProjectData project) {
+		
+		
         StringBuilder str = new StringBuilder();
-        str.append("<!DOCTYPE HTML>");
-        str.append("<table border='0'>");
-        str.append("<tr><td>Id</td>");
+		
+		//titulo
+		str.append(Utils.header(project.projectId));
+		
+		//tabla
+		
+        str.append("<table class= 'Table1' >");
+        str.append("<tr><td>ProjectId</td>");
         str.append("<td>" + project.projectId + "</td></tr>");
-		//modificar datos siguientes
-        
-		/*
 		str.append("<tr><td>Client</td>");
         str.append("<td>" + project.clientId + "</td>");
-        str.append("<tr><td>Date</td>");
+		str.append("<tr><td>Project Manager</td>");
+        str.append("<td>" + project.projectManager + "</td></tr>");
+		str.append("<tr><td>Start Date</td>");
+        str.append("<td>" + project.startDate + "</td></tr>");
+		str.append("<tr><td>Status</td>");
+        str.append("<td>" + project.status + "</td></tr>");
+		str.append("<tr><td>Due Date</td>");
         str.append("<td>" + project.dueDate + "</td>");
-		*/
+        str.append("<tr><td>Number of employees</td>");
+        str.append("<td>" + project.numberOfEmployees + "</td>");
 		
         str.append("</tr>");
         str.append("</table>");
+		
+		//boton
+		str.append( "<form method='get' action='EditProject'>");
+			str.append("<div style='text-align: right; '>" );
+				str.append("<button  class='button button1' type='submit'>Edit project's information</button>")
+			str.append("</div>" );
+		str.append("</form>" );
+
         return str.toString();
     }
 
-    public static String projectDetail(Vector<ProjectDetailData> projectDetail) {
+    public static String projectEmployees(Vector<EmployeeData> employeesProject) {
         StringBuilder str = new StringBuilder();
-        str.append("<table border='0'>");
-        for(int i=0; i< projectDetail.size(); i++){
-            ProjectDetailData detail = projectDetail.elementAt(i);
+		
+		//tabla lista empleados
+        str.append("<table class='Table1'>");
+		
+        for(int i=0; i< employeesProject.size(); i++){
+            EmployeeData employees = employeesProject.elementAt(i);
             str.append("<tr>");
-            str.append("<td>" + detail.projectId + " </td>");
-			//modificar datos siguientes
+            str.append("<td>" + employees.FirstName + " </td>");			
+   			str.append("<td>" + employees.LastName + " </td>");
 			
-            /*
-			str.append("<td>" + detail. + " </td>");
-            str.append("<td class='number'>" + detail.unitPrice + " </td>");
-            str.append("<td class='number'>" + detail.quantity + " </td>");
-            str.append("<td class='number'>" + detail.discount + " </td>");
-            //str.append("<td><a href='EditProject?id=" + detail.projectId + "'>Edit</a></td>");
-            str.append("<td><img style='height:50px;' src='http://northbrick1.appspot.com/images/" + detail.projectId + ".png'></td>");
-            str.append("</tr>"); 
-			*/
-        }
-        str.append("</table>");
+			//agregar mas atributos	
+			str.append("</tr>");
+        }   
+		
+		str.append("</table>");
+		
+		//boton
+		str.append( "<form method='get' action='AddEmployeeProject'>");
+			str.append("<div style='text-align: right; '>" );
+				str.append("<button  class='button button1' type='submit'>Add new employee</button>")
+			str.append("</div>" );
+		str.append("</form>" );
+			
+        
+
         return str.toString();
     }
 }
