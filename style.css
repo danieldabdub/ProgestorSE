@@ -1,0 +1,231 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,400,700");
+h1 {
+  font-family: "Roboto";
+  color: #962B33;
+}
+h2 {
+  font-family: "Roboto";
+  color: #962B33;
+}
+h5 {
+  font-family: "Roboto";
+}
+p {
+  font-family: "Roboto";
+  color: #962B33;
+}
+html{
+	height: 100%;
+	box-sizing: border-box;
+	
+}
+body {
+	position: relative;
+	margin: 0;
+	padding-bottom:6rm;
+	min-height: 100%;
+	
+}
+/* Table1 Style */
+table.Table1 {
+  font-family: "Roboto";
+  border: 2px solid #FFFFFF;
+  width: 80%;
+  text-align: center;
+  border-collapse: collapse;
+  margin: 0px auto 10px;
+}
+table.Table1 td, table.Table1 th {
+  border: 1px solid #FFFFFF;
+  padding: 3px 4px;
+}
+table.Table1 tbody td {
+  font-size: 13px;
+  color: #333333;
+}
+table.Table1 thead {
+  background: #FFFFFF;
+  border-bottom: 2px solid #962B33;
+}
+table.Table1 thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #962B33;
+  text-align: center;
+  border-left: 0px solid #962B33;
+}
+table.Table1 thead th:first-child {
+  border-left: none;
+}
+
+table.Table1 tfoot td {
+  font-size: 14px;
+}
+
+/* Dropdown */
+.dropbtn {
+  background-color: #962B33;
+  color: white;
+  padding: 25px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f1f1f1;
+  font-family: "Roboto";
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #962B33;}
+
+/* Button - Add New */
+
+
+.button1{
+	margin-right:25px;
+    text-decoration: none;
+    padding: 10px;
+	font-family: "Roboto";
+    font-weight: 500;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #962B33;
+    border-radius: 6px;
+    border: 2px solid #962B33;
+  }
+  
+  /* LogIn Button */
+
+.button2{
+	margin-right:25px;
+    text-decoration: none;
+    padding: 10px;
+	font-family: "Roboto";
+    font-weight: 500;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #962B33;
+    border-radius: 6px;
+    border: 2px solid #962B33;
+    position: relative;
+    right:45px;
+    top: 30px;
+  }
+  
+/* Box */
+ .box {
+   margin:20px auto 40px auto;	
+   border:1px solid #d9d9d9;
+   height:20px;
+   overflow: hidden;
+   width: 230px;
+   position:relative;
+}
+select {
+   background: transparent;
+   font-size: 12px;
+   height: 20px;
+   padding: 5px;
+   width: 230px;
+   border-radius: 5px;
+}
+select:focus{ outline: none;}
+
+
+/* Footer */
+
+.navbar {
+  overflow: hidden;
+  background-color: #962B33;
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  font-family: "Roboto"; 
+  font-weight: 300;
+  font-size: 15px;
+}
+.navbardash {
+  overflow: hidden;
+  background-color: #962B33;
+  position: relative;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  font-family: "Roboto"; 
+  font-weight: 300;
+  font-size: 15px;
+}
+
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  background: #f1f1f1;
+  color: black;
+}
+
+.navbar a.active {
+  background-color: #962B33;
+  color: white;
+}
+.navbardash a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbardash a:hover {
+  background: #f1f1f1;
+  color: black;
+}
+
+.navbardash a.active {
+  background-color: #962B33;
+  color: white;
+}
+
+.main {
+  padding: 16px;
+  margin-bottom: 30px;
+}
+/* Float */
+.float_center {
+  position: relative;
+  left: 250px; 
+  top: 45px;
+}
