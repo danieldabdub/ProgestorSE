@@ -31,12 +31,12 @@ public class CheckLogin extends HttpServlet {
             res.sendRedirect("Menu");
         } else {
             PrintWriter toClient = res.getWriter();
-            toClient.println(Utils.header("Login"));
+            toClient.println(Utils.header());
             if (login != null) {
               toClient.println("<h1>Login incorrect</h1>");
             }
             toClient.println(loginForm());
-            toClient.println(Utils.footer("Login"));
+            toClient.println(Utils.footer());
             toClient.close();
         }
     }
