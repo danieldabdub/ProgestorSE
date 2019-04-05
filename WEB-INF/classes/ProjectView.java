@@ -1,8 +1,9 @@
 import java.util.Vector;
 
 public class ProjectView {
-    public static String projectInfo(ProjectData project) {
+    public static String getProjectInfo(ProjectData project) {
 		
+		//esto funcionará con javascript------falta por hacer
 		
         StringBuilder str = new StringBuilder();
 		
@@ -10,8 +11,8 @@ public class ProjectView {
 		str.append(Utils.header(project.projectId));
 		
 		//tabla
-		
-        str.append("<table class= 'Table1' >");
+		//aqui cojo el javascript que falta
+        str.append("<table class= 'Table1' id='project' >");
         str.append("<tr><td>ProjectId</td>");
         str.append("<td>" + project.projectId + "</td></tr>");
 		str.append("<tr><td>Client</td>");
@@ -31,7 +32,8 @@ public class ProjectView {
         str.append("</table>");
 		
 		//boton
-		str.append( "<form method='get' action='EditProject'>");
+		str.append( "<form method='get' action='ProjectEdit'> ");
+			str.append("<input type= 'hidden' name= 'id' value = " + project.projectId + ">")
 			str.append("<div style='text-align: right; '>" );
 				str.append("<button  class='button button1' type='submit'>Edit project's information</button>")
 			str.append("</div>" );
@@ -40,7 +42,7 @@ public class ProjectView {
         return str.toString();
     }
 
-    public static String projectEmployees(Vector<EmployeeData> employeesProject) {
+    public static String getProjectEmployees(Vector<EmployeeData> employeesProject) {
         StringBuilder str = new StringBuilder();
 		
 		//tabla lista empleados
