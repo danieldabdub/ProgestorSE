@@ -19,9 +19,9 @@ public class ProductEdit extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException  {
         res.setContentType("text/html");
         PrintWriter toClient = res.getWriter();
-        toClient.println(Utils.header("Edit Project"));
+        toClient.println(Utils.header("Edit Project " + ));
         toClient.println("<form action='ProjectUpdate' method='GET'>");
-        toClient.println("<table border='1'>");
+        toClient.println("<table class='Table1'>");
 		
 		//desde ProjectView, al darle al boton paso un hidden value llamado "id".
         String idStr = req.getParameter("id");
@@ -34,55 +34,33 @@ public class ProductEdit extends HttpServlet {
 		
         toClient.println("<tr><td>ProjectId</td>");
         toClient.println("<td><input name='projectId' value='" + project.projectId + "'></td></tr>");
-        toClient.println("<tr><td>Client</td>");
-		
+        
+		toClient.println("<tr><td>Client</td>");
         String client = project.client;
-		
-        System.out.println("Client: " + client);
-		
-		//----------------me quede aqui.
+		System.out.println("Client: " + client);
         name = name.replace("'","&#39;");
-        System.out.println("Name: " + name);
-        toClient.println("<td><input name='productName' value='" + name + "'></td></tr>");
+        System.out.println("Client: " + client);
+        toClient.println("<td><input name='client' value='" + client + "'></td></tr>");
 		
-        toClient.println("<tr><td>Supplier</td>");
-        toClient.println("<td><input name='supplierId' value='" + product.supplierId + "'></td>");
+        toClient.println("<tr><td>Project Manager</td>");
+        toClient.println("<td><input name='projectManager' value='" + project.manager + "'></td>");
 		
-        toClient.println("<tr><td>Price</td>");
-        toClient.println("<td><input name='unitPrice' value='" + product.unitPrice + "'></td>");
+        toClient.println("<tr><td>Start Date</td>");
+        toClient.println("<td><input name='startDate' value='" + project.startDate + "'></td>");
         toClient.println("</tr>");
 		
-		 toClient.println("<tr><td>categoryId</td>");
-        toClient.println("<td><input name='CategoryId' value='" + product.CategoryId + "'></td>");
+		toClient.println("<tr><td>Status</td>");
+        toClient.println("<td><input name='status' value='" + project.status + "'></td>");
         toClient.println("</tr>");
 		
-		 toClient.println("<tr><td>QuantityPerUnit</td>");
-        toClient.println("<td><input name='QuantityPerUnit' value='" + product.QuantityPerUnit + "'></td>");
+		 toClient.println("<tr><td>DueDate</td>");
+        toClient.println("<td><input name='dueDate' value='" + project.dueDate + "'></td>");
         toClient.println("</tr>");
-		
-		 toClient.println("<tr><td>UnitsInStock</td>");
-        toClient.println("<td><input name='UnitsInStock' value='" + product.UnitsInStock + "'></td>");
-        toClient.println("</tr>");
-		
-		toClient.println("<tr><td>UnitsOnOrder</td>");
-        toClient.println("<td><input name='UnitsOnOrder' value='" + product.UnitsOnOrder + "'></td>");
-        toClient.println("</tr>");
-		
-		toClient.println("<tr><td>ReorderLevel</td>");
-        toClient.println("<td><input name='ReorderLevel' value='" + product.ReorderLevel + "'></td>");
-        toClient.println("</tr>");
-		
-		toClient.println("<tr><td>Discontinued</td>");
-        toClient.println("<td><input name='Discontinued' value='" + product.Discontinued + "'></td>");
-        toClient.println("</tr>");
-		
-        toClient.println("<tr><td>Image</td>");
-        toClient.println("<td><img src='http://northbrick1.appspot.com/images/" + product.productId + ".png'></td>");
-        toClient.println("</tr>");
-		
+
         toClient.println("</table>");
         toClient.println("<input type='submit'>");
         toClient.println("</form>");
+		
         toClient.println(Utils.footer("Product Form"));
         toClient.close();
     }
