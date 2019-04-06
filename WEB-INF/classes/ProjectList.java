@@ -16,7 +16,7 @@ public class ProjectList extends HttpServlet {
         res.setContentType("text/html");
         PrintWriter toClient = res.getWriter();
 
-        toClient.println(Utils.header("Projects"));
+        toClient.println(Utils.header());
 		toClient.println("<table class='Table1'>");
 		toClient.println("<thead>");
 		toClient.println("<tr>");
