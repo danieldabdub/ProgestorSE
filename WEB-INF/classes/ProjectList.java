@@ -26,10 +26,10 @@ public class ProjectList extends HttpServlet {
 		toClient.println("<th>Status</th>");
 		
 		
-        Vector<ProjectData> projectList;
-        ProjectList = ProjectData.getProjectList(connection);
-        for(int i=0; i< projectList.size(); i++){
-                ProjectData project = getProjectList.elementAt(i);
+        Vector<ProjectData> ProjectList;
+        ProjectList= ProjectData.getProjectList(connection);
+        for(int i=0; i< ProjectList.size(); i++){
+                ProjectData project =ProjectList.elementAt(i);
                 toClient.println("<tr>");
 				toClient.println("<td><a href='ProjectView?id=" + project.projectId + "'>"+ project.projectId +"</a></td>");
                 toClient.println("<td>" + project.projectId + " </td>");
