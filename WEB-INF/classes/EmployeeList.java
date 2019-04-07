@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import java.sql.Connection;
 
-public class ClientList extends HttpServlet {
+public class EmployeeList extends HttpServlet {
     Connection connection;
 
     public void init(ServletConfig config) throws ServletException {
@@ -16,21 +16,22 @@ public class ClientList extends HttpServlet {
         res.setContentType("text/html");
         PrintWriter toClient = res.getWriter();
 
-        toClient.println("<h1> Clients </h1>");
+        toClient.println("<h1> Employees </h1>");
 		toClient.println("<table class='Table1'>");
 		toClient.println("<thead>");
 		toClient.println("<tr>");
-		toClient.println("<th>Client ID</th>");
-		toClient.println("<th>Company Name</th>");
+		toClient.println("<th>Employee ID</th>");
+		toClient.println("<th>First Name </th>");
+		toClient.println("<th>Last Name </th>");
 		
-		
-        Vector<ClientData> ClientList;
-        ClientList= ClientData.getClientList(connection);
-        for(int i=0; i< ClientList.size(); i++){
-                ClientData client =ClientList.elementAt(i);
+        Vector<EmployeeData> EmployeeList;
+        EmployeeList= EmployeeData.getEmployeeList(connection);
+        for(int i=0; i< EmployeeList.size(); i++){
+                EmployeeData employee =EmployeeList.elementAt(i);
                 toClient.println("<tr>");
-				toClient.println("<td><a href='ClientView?id=" + client.clientId + "'>"+ client.clientId +"</a></td>");
-                toClient.println("<td>" + client.companyName + " </td>");
+				toClient.println("<td><a href='EmployeeView?id=" + employee.employeeId + "'>"+ employee.employeeId +"</a></td>");
+                toClient.println("<td>" + employee.fistName + " </td>");
+				toClient.println("<td>" + employee.lastName + " </td>");
                 toClient.println("</tr>");
 
 
