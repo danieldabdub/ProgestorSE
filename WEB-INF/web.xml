@@ -17,8 +17,8 @@
     </servlet>
 
     <servlet>
-        <servlet-name>ProductList</servlet-name>
-        <servlet-class>ProductList</servlet-class>
+        <servlet-name>ProjectList</servlet-name>
+        <servlet-class>ProjecttList</servlet-class>
     </servlet>
 
     <servlet>
@@ -93,8 +93,8 @@
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>ProductList</servlet-name>
-        <url-pattern>/ProductList</url-pattern>
+        <servlet-name>ProjectList</servlet-name>
+        <url-pattern>/ProjectList</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
