@@ -83,7 +83,7 @@ public class ProjectData{
         return vec;
     }
    
-    public static Vector<ProductData> getActiveProjectList(Connection connection){
+    public static Vector<ProjectData> getActiveProjectList(Connection connection){
         
         Vector<ProjectData> vec = new Vector<ProjectData>();
         
