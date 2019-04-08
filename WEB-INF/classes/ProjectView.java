@@ -18,7 +18,7 @@ public class ProjectView {
 		str.append("<tr><td>Client</td>");
         str.append("<td>" + project.clientId + "</td>");
 		str.append("<tr><td>Project Manager</td>");
-        str.append("<td>" + project.projectManager + "</td></tr>");
+        str.append("<td>" + project.first + project.last +"</td></tr>");
 		str.append("<tr><td>Start Date</td>");
         str.append("<td>" + project.startDate + "</td></tr>");
 		str.append("<tr><td>Status</td>");
@@ -33,9 +33,9 @@ public class ProjectView {
 		
 		//boton
 		str.append( "<form method='get' action='ProjectEdit'> ");
-			str.append("<input type= 'hidden' name= 'id' value = " + project.projectId + ">")
+			str.append("<input type= 'hidden' name= 'id' value = " + project.projectId + ">");
 			str.append("<div style='text-align: right; '>" );
-				str.append("<button  class='button button1' type='submit'>Edit project's information</button>")
+				str.append("<button  class='button button1' type='submit'>Edit project's information</button>");
 			str.append("</div>" );
 		str.append("</form>" );
 
@@ -51,8 +51,8 @@ public class ProjectView {
         for(int i=0; i< employeesProject.size(); i++){
             EmployeeData employees = employeesProject.elementAt(i);
             str.append("<tr>");
-            str.append("<td>" + employees.FirstName + " </td>");			
-   			str.append("<td>" + employees.LastName + " </td>");
+            str.append("<td>" + employees.firstName + " </td>");			
+   			str.append("<td>" + employees.lastName + " </td>");
 			
 			//agregar mas atributos	
 			str.append("</tr>");
@@ -61,9 +61,10 @@ public class ProjectView {
 		str.append("</table>");
 		
 		//boton
+		str.append(Util.footer());
 		str.append( "<form method='get' action='AddEmployeeProject'>");
 			str.append("<div style='text-align: right; '>" );
-				str.append("<button  class='button button1' type='submit'>Add new employee</button>")
+				str.append("<button  class='button button1' type='submit'>Add new employee</button>");
 			str.append("</div>" );
 		str.append("</form>" );
 			

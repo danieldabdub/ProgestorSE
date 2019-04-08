@@ -15,8 +15,8 @@ public class ProjectList extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException  {
         res.setContentType("text/html");
         PrintWriter toClient = res.getWriter();
-
-        toClient.println("<h1> Projects </h1>");
+		
+		toClient.println(Utils.header("Projects"));
 		toClient.println("<table class='Table1'>");
 		toClient.println("<thead>");
 		toClient.println("<tr>");
@@ -24,6 +24,7 @@ public class ProjectList extends HttpServlet {
 		toClient.println("<th>Client</th>");
 		toClient.println("<th>Project Manager</th>");
 		toClient.println("<th>Status</th>");
+		toClient.println("<th>Due Date</th>");		
 		
 		
         Vector<ProjectData> ProjectList;
@@ -31,11 +32,12 @@ public class ProjectList extends HttpServlet {
         for(int i=0; i< ProjectList.size(); i++){
                 ProjectData project =ProjectList.elementAt(i);
                 toClient.println("<tr>");
-				toClient.println("<td><a href='ProjectView?id=" + project.projectId + "'>"+ project.projectId +"</a></td>");
-                toClient.println("<td>" + project.projectId + " </td>");
+				toClient.println("<td><a href='ProjectEdit?id=" + project.projectId + "'>"+ project.projectId +"</a></td>");
                 toClient.println("<td>" + project.companyName + " </td>");
-                toClient.println("<td>" + project.first + " </td>");
+                toClient.println("<td>" + project.first+ " "+ project.last +" </td>");
                 toClient.println("<td>" + project.status + " </td>");
+                
+                toClient.println("<td>" + project.dueDate + " </td>");
                 
                 toClient.println("</tr>");
 
@@ -43,15 +45,17 @@ public class ProjectList extends HttpServlet {
 
 
         }
+		
+		toClient.println(Utils.footer());
 		toClient.println("</tbody>");
 		toClient.println("</tr>");
         toClient.println("</table>");
-		toClient.println("<form method='get' action='CreateProject.html'>");
+		toClient.println("<form method='get' action='CreateProject'>");
 		toClient.println("<div style='text-align: right;'>");
 		toClient.println("<button class='button button1'  type='submit'>Create Project</button>");
 		toClient.println("</div>");
 		toClient.println("</form>");
 		toClient.println("</body>");
         toClient.close();
-    }
+	}
 }
