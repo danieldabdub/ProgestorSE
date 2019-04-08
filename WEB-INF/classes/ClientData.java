@@ -71,9 +71,8 @@ public class ClientData{
     
     public static ClientData getClient(Connection connection, String clientId){
         
+        String sql = "SELECT clientId, companyName, countryHq, contact, phone, mail FROM Clients WHERE clientId=?";
         
-        //ESCRIBIR SQL!
-        String sql = "";
         System.out.println("getClient: " + sql);
         
         ClientData client = null;
@@ -81,13 +80,16 @@ public class ClientData{
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, clientId);
-            
             ResultSet result = pstmt.executeQuery();
             
             if(result.next()){
                 client = new ClientData(
-                    //ME FALTARIAN COSAS AQUI!
-                    result.getString("clientId")
+                    result.getString("clientId"),
+                    result.getString("companyName"),
+                    result.getString("countryHq"),
+                    result.getString("contact"),
+                    result.getString("phone"),
+                    result.getString("mail")
                 );  
             }
             result.close();
