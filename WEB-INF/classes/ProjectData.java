@@ -11,35 +11,42 @@ public class ProjectData{
     // Poner aqui los nombres que finalmente se usen.
     
     String projectId;
-    String manager;
+	String companyName;
+    String first;
+    String last;
     String status;
     
     
     // Primer Constructor
     //PONER TODOS LOS QUE FALTAN ABAJO
-    ProjectData (String projectId){
+    ProjectData (String projectId, String companyName, String first, String last, String status){
         this.projectId = projectId;
+		this.companyName = companyName;
+		this.first = first;
+		this.last = last;
+		this.status = status;
     }
     
-    public static Vector<ProductData> getProjectList(Connection connection){
+    public static Vector<ProjectData> getProjectList(Connection connection){
         
         Vector<ProjectData> vec = new Vector<ProjectData>();
-        
-        //ESCRIBIR SQL
-        
-        String sql = "";
+        String sql = "SELECT projectId, companyName, first, last, status FROM Projects, Clients, ProjectManagers WHERE Clients.clientId=Projects.clientId AND ProjectManagers.managerId=Projects.managerId;";
+
         System.out.println("getProjectList: "+ sql);
-        
+       
         try {
             Statement statement=connection.createStatement();
             ResultSet result = statement.executeQuery(sql);
             
             while(result.next()) {
-                
-                // CAMBIAR! SEGUN LAS BD
-                
+               
                 ProjectData project = new ProjectData(
-                    result.getString("projectId")
+                    result.getString("projectId"),
+					result.getString("companyName"),
+					result.getString("first"),
+					result.getString("last"),
+					result.getString("status")
+					
                 );
                 
                 vec.addElement(project);
@@ -51,7 +58,7 @@ public class ProjectData{
         }
         return vec;
     }
-    
+   
     public static Vector<ProductData> getActiveProjectList(Connection connection){
         
         Vector<ProjectData> vec = new Vector<ProjectData>();

@@ -17,23 +17,23 @@
     </servlet>
 
     <servlet>
-        <servlet-name>ProductList</servlet-name>
-        <servlet-class>ProductList</servlet-class>
+        <servlet-name>ProjectList</servlet-name>
+        <servlet-class>ProjecttList</servlet-class>
     </servlet>
 
     <servlet>
-        <servlet-name>ProductListMockup</servlet-name>
-        <servlet-class>ProductListMockup</servlet-class>
+        <servlet-name>ClientList</servlet-name>
+        <servlet-class>ClientList</servlet-class>
     </servlet>
 
     <servlet>
-        <servlet-name>ProductEditMockup</servlet-name>
-        <servlet-class>ProductEditMockup</servlet-class>
+        <servlet-name>EmployeeList</servlet-name>
+        <servlet-class>EmployeeList</servlet-class>
     </servlet>
 
     <servlet>
-        <servlet-name>ProductEdit</servlet-name>
-        <servlet-class>ProductEdit</servlet-class>
+        <servlet-name>QualificationList</servlet-name>
+        <servlet-class>QualificationList</servlet-class>
     </servlet>
 
     <servlet>
@@ -93,23 +93,23 @@
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>ProductList</servlet-name>
-        <url-pattern>/ProductList</url-pattern>
+        <servlet-name>ProjectList</servlet-name>
+        <url-pattern>/ProjectList</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>ProductListMockup</servlet-name>
-        <url-pattern>/ProductListMockup</url-pattern>
+        <servlet-name>ClientList</servlet-name>
+        <url-pattern>/ClientList</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>ProductEditMockup</servlet-name>
-        <url-pattern>/ProductEditMockup</url-pattern>
+        <servlet-name>EmployeeList</servlet-name>
+        <url-pattern>/EmployeeList</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>ProductEdit</servlet-name>
-        <url-pattern>/ProductEdit</url-pattern>
+        <servlet-name>QualificationList</servlet-name>
+        <url-pattern>/QualificationList</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
