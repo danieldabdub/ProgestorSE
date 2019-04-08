@@ -15,8 +15,8 @@ public class ProjectList extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException  {
         res.setContentType("text/html");
         PrintWriter toClient = res.getWriter();
-
-        toClient.println("<h1> Projects </h1>");
+		
+		
 		toClient.println("<table class='Table1'>");
 		toClient.println("<thead>");
 		toClient.println("<tr>");
