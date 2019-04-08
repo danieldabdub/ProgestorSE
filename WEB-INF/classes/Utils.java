@@ -1,5 +1,5 @@
 public class Utils {
-    public static String Header(String title) {
+    public static String header(String title) {
         StringBuilder str = new StringBuilder();
         str.append("<head>");
         str.append("<A HREF='Menu.html'>");
@@ -23,7 +23,7 @@ public class Utils {
         return str.toString();
     }
     
-    public static String HeaderD(String title) {
+    public static String headerD(String title) {
         StringBuilder str = new StringBuilder();
         str.append("<head>");
         str.append("<A HREF='Menu.html'>");
@@ -45,6 +45,25 @@ public class Utils {
         str.append("<h2>Dashboard</h2>");
         str.append("</div>");
         str.append("<title>"+ title +"</title>");
+        return str.toString();
+    }
+    
+    
+    public static String footer() {
+        StringBuilder str = new StringBuilder();
+        str.append("<div style='text-align: right;' class='navbar'>");
+        str.append("<a href='#'><b>About Us</b></a>");
+        str.append("<a href='Search.html'>Search</a>");
+        str.append("<a href='Notifications.html'>Notifications</a>");
+        str.append("<a href='Dashboard.html'>Dashboard</a>");
+        str.append("<a href='Projects.html'>Projects</a>");
+        str.append("<a href='Clients.html'>Clients</a>");
+        str.append("<a href='Employees.html'>Employees</a>");
+        str.append("<a href='Qualifications.html'>Qualifications</a>");
+        str.append("<p> <font color='white'>Sancho el sabio nº8 8 Izq. </font></p>");
+        str.append("<p> <font color='white'>654-321-000 </font></p>");
+        str.append("<p> <font color='white'>help@progestor.es</font></p>");
+        str.append("<p> <font color='white'>help@progestor.es</font></p>");
         return str.toString();
     }
 }
