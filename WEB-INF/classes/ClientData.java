@@ -104,8 +104,10 @@ public class ClientData{
     }
     
     public static int updateClient(Connection connection, ClientData client){
-        //ESCRIBIR SQL!!!!
-        String sql="";
+        
+        String sql="UPDATE Clients";
+        sql += "SET companyName=?, countryHq=?, contact=?, phone=?, mail=?";
+        sql += "WHERE clientId=?";
         System.out.println("updateClient: " + sql);
         
         int n = 0;
@@ -113,10 +115,13 @@ public class ClientData{
         try {
             PreparedStatement stmtUpdate= connection.prepareStatement(sql);
             
-            stmtUpdate.setString(1,client.clientId);
-//            stmtUpdate.setInt(2,product.supplierId);
-//            stmtUpdate.setFloat(3,product.unitPrice);
-//            stmtUpdate.setString(4,product.productId); CAMBIAR ESTO!
+            stmtUpdate.setString(1,client.companyName);
+            stmtUpdate.setString(2,client.countryHq);
+            stmtUpdate.setString(3,client.contact);
+            stmtUpdate.setString(4,client.phone);
+            stmtUpdate.setString(5,client.mail);
+            stmtUpdate.setString(6,client.clientId);
+            
             
             n = stmtUpdate.executeUpdate();
             stmtUpdate.close();
