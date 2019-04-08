@@ -32,10 +32,12 @@ public class ProjectList extends HttpServlet {
                 ProjectData project =ProjectList.elementAt(i);
                 toClient.println("<tr>");
 				toClient.println("<td><a href='ProjectView?id=" + project.projectId + "'>"+ project.projectId +"</a></td>");
-                toClient.println("<td>" + project.projectId + " </td>");
                 toClient.println("<td>" + project.companyName + " </td>");
+                toClient.println("<td>" + project.last + " </td>");
                 toClient.println("<td>" + project.first + " </td>");
                 toClient.println("<td>" + project.status + " </td>");
+                
+                toClient.println("<td>" + project.dueDate + " </td>");
                 
                 toClient.println("</tr>");
 
