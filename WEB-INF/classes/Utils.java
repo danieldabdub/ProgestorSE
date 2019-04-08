@@ -3,7 +3,7 @@ public class Utils {
         StringBuilder str = new StringBuilder();
         str.append("<head>");
         str.append("<A HREF='Menu.html'>");
-        str.append("<IMG SRC='Logo.png' style='left;width:266,7px;height:150px;'>");
+        str.append("<IMG SRC='logo.png' style='left;width:266,7px;height:150px;'>");
         str.append("</A>");
         str.append("<title>"+ title +"</title>");
         str.append("<link rel='stylesheet' type='text/css' href='style.css'></head>");
@@ -27,7 +27,7 @@ public class Utils {
         StringBuilder str = new StringBuilder();
         str.append("<head>");
         str.append("<A HREF='Menu.html'>");
-        str.append("<IMG SRC='Logo.png' style='left;width:266,7px;height:150px;'>");
+        str.append("<IMG SRC='logo.png' style='left;width:266,7px;height:150px;'>");
         str.append("</A>");
         str.append("<div class='dropdown' style='float:right;'>");
         str.append("<button class='dropbtn'><b>__<br>__<br>__</button>");
