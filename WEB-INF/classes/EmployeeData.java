@@ -36,6 +36,9 @@ public class EmployeeData{
         this.mail = mail;
     }    
     
+    // Constructor para: - getProjectEmployeeList
+    //                   - getQualifiedEmployees
+    
     EmployeeData(String employeeId, String firstName, String lastName) {
         this.employeeId = employeeId;
         this.firstName = firstName;
@@ -140,7 +143,7 @@ public class EmployeeData{
     }
     
     public static int updateEmployee(Connection connection, EmployeeData employee){
-        //ESCRIBIR SQL!!!!
+        
         String sql="UPDATE Employees";
         sql += "SET firstName=?, lastName=?, hireDate=?, phone=?, mail=?";
         sql += "WHERE employeeId=?";
@@ -155,6 +158,7 @@ public class EmployeeData{
             stmtUpdate.setDate(3,employee.hireDate);
             stmtUpdate.setString(4,employee.phone);
             stmtUpdate.setString(5,employee.mail);
+            stmtUpdate.setString(6,employee.employeeId);
 
             n = stmtUpdate.executeUpdate();
             stmtUpdate.close();

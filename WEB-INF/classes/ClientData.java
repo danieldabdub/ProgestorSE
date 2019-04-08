@@ -12,17 +12,28 @@ public class ClientData{
     
     String clientId;
 	String companyName;
-    
-    
-    // Primer Constructor
-    //PONER TODOS LOS QUE FALTAN ABAJO
-    ClientData (String clientId){
+    String countryHq;
+    String contact;
+    String phone;
+    String mail;
+        
+    // Primer Constructor: -getClientList
+
+    ClientData (String clientId, String companyName, String countryHq){
         this.clientId = clientId;
+        this.companyName = companyName;
+        this.countryHq = countryHq;
     }
-	
-	    ClientData (String clientId, String CompanyName){
+    
+    // Segundo Contructor: -getClient
+    
+    ClientData (String clientId, String companyName, String countryHq, String contact, String phone, String mail){
         this.clientId = clientId;
-		this.companyName = companyName;
+        this.companyName = companyName;
+        this.countryHq = countryHq;
+        this.contact = contact;
+        this.phone = phone;
+        this.mail = mail;
     }
     
      public static Vector<ClientData> getClientList(Connection connection){
@@ -31,20 +42,21 @@ public class ClientData{
         
         //ESCRIBIR SQL
         
-        String sql = "";
+        String sql = "SELECT clientId, companyName, countryHq FROM Clients";
+         
         System.out.println("getClientList: " + sql);
         
         try {
+            
             Statement statement=connection.createStatement();
             ResultSet result = statement.executeQuery(sql);
             
             while(result.next()) {
                 
-                // CAMBIAR! SEGUN LAS BD
-                
                 ClientData client = new ClientData(
                     result.getString("clientId"),
-					result.getString("companyName")
+					result.getString("companyName"),
+                    result.getString("countryHq")
                 );
                 
                 vec.addElement(client);
@@ -59,9 +71,8 @@ public class ClientData{
     
     public static ClientData getClient(Connection connection, String clientId){
         
+        String sql = "SELECT clientId, companyName, countryHq, contact, phone, mail FROM Clients WHERE clientId=?";
         
-        //ESCRIBIR SQL!
-        String sql = "";
         System.out.println("getClient: " + sql);
         
         ClientData client = null;
@@ -69,13 +80,16 @@ public class ClientData{
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, clientId);
-            
             ResultSet result = pstmt.executeQuery();
             
             if(result.next()){
                 client = new ClientData(
-                    //ME FALTARIAN COSAS AQUI!
-                    result.getString("clientId")
+                    result.getString("clientId"),
+                    result.getString("companyName"),
+                    result.getString("countryHq"),
+                    result.getString("contact"),
+                    result.getString("phone"),
+                    result.getString("mail")
                 );  
             }
             result.close();
@@ -90,8 +104,10 @@ public class ClientData{
     }
     
     public static int updateClient(Connection connection, ClientData client){
-        //ESCRIBIR SQL!!!!
-        String sql="";
+        
+        String sql="UPDATE Clients";
+        sql += "SET companyName=?, countryHq=?, contact=?, phone=?, mail=?";
+        sql += "WHERE clientId=?";
         System.out.println("updateClient: " + sql);
         
         int n = 0;
@@ -99,10 +115,13 @@ public class ClientData{
         try {
             PreparedStatement stmtUpdate= connection.prepareStatement(sql);
             
-            stmtUpdate.setString(1,client.clientId);
-//            stmtUpdate.setInt(2,product.supplierId);
-//            stmtUpdate.setFloat(3,product.unitPrice);
-//            stmtUpdate.setString(4,product.productId); CAMBIAR ESTO!
+            stmtUpdate.setString(1,client.companyName);
+            stmtUpdate.setString(2,client.countryHq);
+            stmtUpdate.setString(3,client.contact);
+            stmtUpdate.setString(4,client.phone);
+            stmtUpdate.setString(5,client.mail);
+            stmtUpdate.setString(6,client.clientId);
+            
             
             n = stmtUpdate.executeUpdate();
             stmtUpdate.close();
