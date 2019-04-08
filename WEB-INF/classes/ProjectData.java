@@ -18,6 +18,8 @@ public class ProjectData{
     Date startDate;
 	Date dueDate;
     String countryName;
+    String startMonth;
+    String dueMonth;
     
     
     // Primer Constructor: - getProjectList
@@ -40,16 +42,17 @@ public class ProjectData{
     
     // Segundo Constructor: - getActiveProjectList
     
-    ProjectData (String projectId, String companyName, Date startDate, Date dueDate){
+    ProjectData (String projectId, String companyName, String startMonth, String dueMonth){
         
         this.projectId = projectId;
 		this.companyName = companyName;
-        this.startDate = startDate;
-        this.dueDate = dueDate;
+        this.startMonth = startMonth;
+        this.dueMonth = dueMonth;
     
     }
 	
-	//este constructor se usara para ProjectUpdate
+	//Tercer Constructor: - ProjectUpdate
+    
 	    ProjectData (String projectId, String companyName,String last, String first, Date startDate, String status, Date dueDate){
         
         this.projectId = projectId;
@@ -104,7 +107,7 @@ public class ProjectData{
         
         // Verificar el "In progress"
         
-        String sql = "SELECT projectId, companyName, startDate, dueDate FROM Projects, Clients WHERE Clients.clientId=Projects.clientId AND status='In progress'";
+        String sql = "SELECT projectId, companyName, MONTH(startDate) AS startMonth, MONTH(dueDate) AS dueMonth FROM Projects, Clients WHERE Clients.clientId=Projects.clientId AND status='In progress'";
         
         System.out.println("getActiveProjectList: " + sql);
         
