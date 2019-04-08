@@ -51,25 +51,27 @@ public class ProjectData{
     
     }
 	
-	//Tercer Constructor: - ProjectUpdate
+	//Tercer Constructor: - ProjectUpdate/ProjectEdit
     
-	    ProjectData (String projectId, String companyName,String last, String first, Date startDate, String status, Date dueDate){
+	    ProjectData (String projectId, String companyName,String first, String last, Date startDate, String status, Date dueDate){
         
         this.projectId = projectId;
 		this.companyName = companyName;
-		this.last=last;
 		this.first=first;
+		this.last=last;
         this.startDate = startDate;
 		this.status=status;
         this.dueDate = dueDate;
     
     }
+   
+    
     
     public static Vector<ProjectData> getProjectList(Connection connection){
         
         Vector<ProjectData> vec = new Vector<ProjectData>();
         
-        String sql = "SELECT projectId, companyName, last, first, status, dueDate FROM Projects, Clients, ProjectManagers WHERE Clients.clientId=Projects.clientId AND ProjectManagers.managerId=Projects.managerId;";
+        String sql = "SELECT projectId, companyName, first, last, status, dueDate FROM Projects, Clients, ProjectManagers WHERE Clients.clientId=Projects.clientId AND ProjectManagers.managerId=Projects.managerId;";
 
         System.out.println("getProjectList: "+ sql);
        
@@ -83,8 +85,8 @@ public class ProjectData{
                 ProjectData project = new ProjectData(
                     result.getString("projectId"),
 					result.getString("companyName"),
-					result.getString("last"),
 					result.getString("first"),
+					result.getString("last"),
 					result.getString("status"),
 					result.getDate("dueDate")
                 );
