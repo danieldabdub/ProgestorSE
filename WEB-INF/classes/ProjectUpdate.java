@@ -21,11 +21,12 @@ public class ProjectUpdate extends HttpServlet {
 		//ahora recogeré la info de la pantalla segun el name="__" asignado dentro de cada input
                     req.getParameter("projectId"),
                     req.getParameter("client"),
-					req.getParameter("last"),
 					req.getParameter("first"),
+					req.getParameter("last"),
 					req.getDate("startDate"),
 					req.getParameter("status"),
-					req.getDate("dueDate")
+					req.getDate("dueDate"),
+					req.getParameter("countryName")
                 );
         int n = ProjectData.updateProject(connection, project);
         res.sendRedirect("ProjectEdit?id=" + idStr + "&a=" + Math.random());

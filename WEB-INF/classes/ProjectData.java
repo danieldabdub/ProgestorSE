@@ -64,7 +64,18 @@ public class ProjectData{
         this.dueDate = dueDate;
     
     }
-   
+	  ProjectData (String projectId, String companyName,String first, String last, Date startDate, String status, Date dueDate, String countryName){
+        
+        this.projectId = projectId;
+		this.companyName = companyName;
+		this.first=first;
+		this.last=last;
+        this.startDate = startDate;
+		this.status=status;
+        this.dueDate = dueDate;
+		this.countryName=countryName;
+    
+    }
     
     
     public static Vector<ProjectData> getProjectList(Connection connection){
@@ -172,10 +183,9 @@ public class ProjectData{
     // Ojo: terminar
     
     public static ProjectData getProject(Connection connection, String projectId){
-        
-        
-        //ESCRIBIR SQL!
-        String sql = "";
+        String sql = "SELECT projectId, companyName, first, last, startDate, status, dueDate, countryName FROM Projects, Clients, ProjectManagers WHERE Clients.clientId=Projects.clientId AND ProjectManagers.managerId=Projects.managerId";
+        sql += " AND projectId=?";
+
         System.out.println("getProject: " + sql);
         
         ProjectData project = null;
@@ -188,8 +198,14 @@ public class ProjectData{
             
             if(result.next()){
                 project = new ProjectData(
-                    //ME FALTARIAN COSAS AQUI!
-                    result.getString("projectId")
+                    result.getString("projectId"),
+					result.getString("companyName"),
+					result.getString("first"),
+					result.getString("last"),
+					result.getDate("startDate"),
+					result.getString("status"),
+					result.getDate("dueDate"),
+					result.getString("countryName")
                 );  
             }
             result.close();
@@ -204,8 +220,7 @@ public class ProjectData{
     }
     
     public static int updateProject(Connection connection, ProjectData project){
-        //ESCRIBIR SQL!!!!
-        String sql="";
+        String sql="UPDATE Projects SET companyName = ?, first = ?, last = ?, stardate=?, status = ?, dueDate = ?, countryName = ? WHERE projectId = ?";
         System.out.println("updateProject: " + sql);
         
         int n = 0;
@@ -213,10 +228,14 @@ public class ProjectData{
         try {
             PreparedStatement stmtUpdate= connection.prepareStatement(sql);
             
-//            stmtUpdate.setString(1,project.projectId);
-//            stmtUpdate.setInt(2,project.supplierId);
-//            stmtUpdate.setFloat(3,project.unitPrice);
-//            stmtUpdate.setString(4,project.projectId); CAMBIAR ESTO!
+           stmtUpdate.setString(1,project.companyName);
+           stmtUpdate.setString(2,project.first);
+           stmtUpdate.setString(3,project.last);
+		   stmtUpdate.setDate(4,project.dueDate);
+           stmtUpdate.setString(5,project.status);
+		   stmtUpdate.setDate(6,project.dueDate);
+		   stmtUpdate.setString(7,project.countryName);
+		   stmtUpdate.setString(8,project.projectId);
             
             n = stmtUpdate.executeUpdate();
             stmtUpdate.close();

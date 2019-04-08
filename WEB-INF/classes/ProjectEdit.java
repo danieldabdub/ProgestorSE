@@ -42,11 +42,9 @@ public class ProjectEdit extends HttpServlet {
 		toClient.println("<tr><td>Client</td>");
         toClient.println("<td><input name='companyName' value='" + project.companyName + "'></td></tr>");
 
-		toClient.println("<tr><td>Manager Last Name</td>");
-        toClient.println("<td><input name='last' value='" + project.last + "'></td>");		
-		
-        toClient.println("<tr><td>Manager First Name</td>");
-        toClient.println("<td><input name='first' value='" + project.first + "'></td>");
+		toClient.println("<tr><td>Manager</td>");
+        toClient.println("<td><input name='last' value='" + project.first+ " " + project.last + "'></td>");		
+	
 		
         toClient.println("<tr><td>Start Date</td>");
         toClient.println("<td><input name='startDate' value='" + project.startDate + "'></td>");
