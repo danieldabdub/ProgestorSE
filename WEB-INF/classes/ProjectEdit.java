@@ -64,7 +64,7 @@ public class ProjectEdit extends HttpServlet {
         toClient.println("<input type='submit'>");
         toClient.println("</form>");
 		
-        toClient.println(Utils.footer("Product Form"));
+        toClient.println(Utils.footer());
         toClient.close();
     }
 }
