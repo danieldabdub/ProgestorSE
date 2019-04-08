@@ -18,8 +18,8 @@ public class ProjectData{
     Date startDate;
 	Date dueDate;
     String countryName;
-    String startMonth;
-    String dueMonth;
+    int startMonth;
+    int dueMonth;
     
     
     // Primer Constructor: - getProjectList
@@ -42,7 +42,7 @@ public class ProjectData{
     
     // Segundo Constructor: - getActiveProjectList
     
-    ProjectData (String projectId, String companyName, String startMonth, String dueMonth){
+    ProjectData (String projectId, String companyName, int startMonth, int dueMonth){
         
         this.projectId = projectId;
 		this.companyName = companyName;
@@ -112,13 +112,9 @@ public class ProjectData{
         return vec;
     }
    
-  /*   public static Vector<ProjectData> getActiveProjectList(Connection connection){
+     public static Vector<ProjectData> getActiveProjectList(Connection connection){
         
         Vector<ProjectData> vec = new Vector<ProjectData>();
-        
-        //ESCRIBIR SQL CON LA CONDICION DE QUE ESTE ACTIVO
-        
-        // Verificar el "In progress"
         
         String sql = "SELECT projectId, companyName, MONTH(startDate) AS startMonth, MONTH(dueDate) AS dueMonth FROM Projects, Clients WHERE Clients.clientId=Projects.clientId AND status='In progress'";
         
@@ -135,8 +131,8 @@ public class ProjectData{
                 ProjectData project = new ProjectData(
                     result.getString("projectId"),
                     result.getString("companyName"),
-                    result.getString("startMonth"),
-                    result.getString("dueMonth")
+                    Integer.parseInt(result.getString("startMonth")),
+                    Integer.parseInt(result.getString("dueMonth"))
                 );
                 
                 vec.addElement(project);
@@ -148,7 +144,7 @@ public class ProjectData{
         }
         return vec;
     }
-     */
+     
     // Ojo: cuando este listo Clients hacerlo.
     
 //    public static Vector<ProjectData> getClientProjectList(Connection connection, String clientId){
