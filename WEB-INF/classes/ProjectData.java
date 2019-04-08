@@ -120,7 +120,7 @@ public class ProjectData{
         return vec;
     }
     
-    
+    // Ojo: cuando este listo Clients hacerlo.
     public static Vector<ProjectData> getClientProjectList(Connection connection, String clientId){
         
         Vector<ProjectData> vec = new Vector<ProjectData>();
@@ -150,6 +150,7 @@ public class ProjectData{
         return vec;
     }
     
+    // Ojo
     public static Vector<ProjectData> getProject(Connection connection, String projectId){
         
         
