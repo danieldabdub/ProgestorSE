@@ -21,7 +21,7 @@ public class EmployeeData{
         this.employeeId = employeeId;
     }
     
-    public static Vector<EmployeeData> getEmployeeList(Connection connection){
+/*     public static Vector<EmployeeData> getEmployeeList(Connection connection){
         
         Vector<EmployeeData> vec = new Vector<EmployeeData>();
         
@@ -50,7 +50,7 @@ public class EmployeeData{
             System.out.println("Error in getEmployeeList: " + sql + " Exception: " + e);
         }
         return vec;
-    }
+    } */
     
     public static Vector<EmployeeData> getProjectEmployeeList(Connection connection, String projectId){
         

@@ -33,9 +33,9 @@ public class ProjectView {
 		
 		//boton
 		str.append( "<form method='get' action='ProjectEdit'> ");
-			str.append("<input type= 'hidden' name= 'id' value = " + project.projectId + ">")
+			str.append("<input type= 'hidden' name= 'id' value = " + project.projectId + ">");
 			str.append("<div style='text-align: right; '>" );
-				str.append("<button  class='button button1' type='submit'>Edit project's information</button>")
+				str.append("<button  class='button button1' type='submit'>Edit project's information</button>");
 			str.append("</div>" );
 		str.append("</form>" );
 
@@ -63,7 +63,7 @@ public class ProjectView {
 		//boton
 		str.append( "<form method='get' action='AddEmployeeProject'>");
 			str.append("<div style='text-align: right; '>" );
-				str.append("<button  class='button button1' type='submit'>Add new employee</button>")
+				str.append("<button  class='button button1' type='submit'>Add new employee</button>");
 			str.append("</div>" );
 		str.append("</form>" );
 			
