@@ -20,12 +20,12 @@ public class Dashboard extends HttpServlet {
 //        String categoryId = req.getParameter("id");
 // OJO! Aqui como seria el header?
         toClient.println(Utils.header());
-        toClient.println('<h1>Dashboard</h1>')
+        toClient.println("<h1>Dashboard</h1>");
         Vector<ProjectData> activeProjectList;
         
         activeProjectList = ProjectData.getActiveProjectList(connection);
         
-        toClient.println('<div class="gantt">');
+        toClient.println('<div class="gantt">);
         toClient.println('<div class="gantt__row gantt__row--months">');
         toClient.println('<div class="gantt__row-first"></div>');
         toClient.println('<span>Jan</span><span>Feb</span><span>Mar</span>');
