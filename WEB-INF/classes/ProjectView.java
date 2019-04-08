@@ -61,6 +61,7 @@ public class ProjectView {
 		str.append("</table>");
 		
 		//boton
+		str.append(Util.footer());
 		str.append( "<form method='get' action='AddEmployeeProject'>");
 			str.append("<div style='text-align: right; '>" );
 				str.append("<button  class='button button1' type='submit'>Add new employee</button>");
