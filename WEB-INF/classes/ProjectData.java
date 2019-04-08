@@ -121,7 +121,7 @@ public class ProjectData{
     }
     
     // Ojo: cuando este listo Clients hacerlo.
-    public static Vector<ProjectData> getClientProjectList(Connection connection, String clientId){
+    /*public static Vector<ProjectData> getClientProjectList(Connection connection, String clientId){
         
         Vector<ProjectData> vec = new Vector<ProjectData>();
         
@@ -148,40 +148,40 @@ public class ProjectData{
             System.out.println("Error in getClientProjectList: " + sql + " Exception: " + e);
         }
         return vec;
-    }
+    }*/
     
     // Ojo: terminar 
-    public static ProjectData getProject(Connection connection, String projectId){
-        
-        
-        //ESCRIBIR SQL!
-        String sql = "";
-        System.out.println("getProject: " + sql);
-        
-        ProjectData product = null;
-        
-        try {
-            PreparedStatement pstmt = connection.prepareStatement(sql);
-            pstmt.setString(1, projectId);
-            
-            ResultSet result = pstmt.executeQuery();
-            
-            if(result.next()){
-                project = new ProjectData(
-                    //ME FALTARIAN COSAS AQUI!
-                    result.getString("projectId")
-                );  
-            }
-            result.close();
-            pstmt.close();
-        } catch(SQLException e) {
-            e.printStackTrace();
-            System.out.println("Error in getProduct: " + sql + " Exception: " + e);
-        }
-        
-        return project;
-        
-    }
+//    public static ProjectData getProject(Connection connection, String projectId){
+//        
+//        
+//        //ESCRIBIR SQL!
+//        String sql = "";
+//        System.out.println("getProject: " + sql);
+//        
+//        ProjectData product = null;
+//        
+//        try {
+//            PreparedStatement pstmt = connection.prepareStatement(sql);
+//            pstmt.setString(1, projectId);
+//            
+//            ResultSet result = pstmt.executeQuery();
+//            
+//            if(result.next()){
+//                project = new ProjectData(
+//                    //ME FALTARIAN COSAS AQUI!
+//                    result.getString("projectId")
+//                );  
+//            }
+//            result.close();
+//            pstmt.close();
+//        } catch(SQLException e) {
+//            e.printStackTrace();
+//            System.out.println("Error in getProduct: " + sql + " Exception: " + e);
+//        }
+//        
+//        return project;
+//        
+//    }
     
     public static int updateProject(Connection connection, ProjectData project){
         //ESCRIBIR SQL!!!!
@@ -193,7 +193,7 @@ public class ProjectData{
         try {
             PreparedStatement stmtUpdate= connection.prepareStatement(sql);
             
-            stmtUpdate.setString(1,project.projectId);
+//            stmtUpdate.setString(1,project.projectId);
 //            stmtUpdate.setInt(2,product.supplierId);
 //            stmtUpdate.setFloat(3,product.unitPrice);
 //            stmtUpdate.setString(4,product.productId); CAMBIAR ESTO!
