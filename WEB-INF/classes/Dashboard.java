@@ -45,23 +45,23 @@ public class Dashboard extends HttpServlet {
         
         for(int i=0; i< activeProjectList.size(); i++){
             
-                ProjectData project = activeProjectList.elementAt(i);
-            
-            // OJO CON EL CLIENT ID! y OJO! Aqui tuviera que hacer otro constructor!
-            // Seria interesante cambiar de color!
-            
-                toClient.println("<div class='gantt__row'>");
-                toClient.println("<div class=gantt__row-first'>" + project.clientId);
-                toClient.println("</div>");
-            
-                toClient.println("<ul class='gantt__row-bars'>");
-            
-// Ojo aqui con los MESES!
-
-// Seria interesante jugar con los colores
-            
-                toClient.println("<li style='grid-column: "+ project.StartMonth +"/"+ project.DueMonth+"; background-color: #2ecaac;'>" + project.projectId + "</li></ul></div>");
-                
+//                ProjectData project = activeProjectList.elementAt(i);
+//            
+//            // OJO CON EL CLIENT ID! y OJO! Aqui tuviera que hacer otro constructor!
+//            // Seria interesante cambiar de color!
+//            
+//                toClient.println("<div class='gantt__row'>");
+//                toClient.println("<div class=gantt__row-first'>" + project.clientId);
+//                toClient.println("</div>");
+//            
+//                toClient.println("<ul class='gantt__row-bars'>");
+//            
+//// Ojo aqui con los MESES!
+//
+//// Seria interesante jugar con los colores
+//            
+//                toClient.println("<li style='grid-column: "+ project.StartMonth +"/"+ project.DueMonth+"; background-color: #2ecaac;'>" + project.projectId + "</li></ul></div>");
+//                
         }
 
         toClient.println("</div>");
