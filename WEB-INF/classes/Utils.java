@@ -49,7 +49,7 @@ public class Utils {
     }
     
     
-    public static String footer() {
+    public static String footer(){
         StringBuilder str = new StringBuilder();
         str.append("<div style='text-align: right;' class='navbar'>");
         str.append("<a href='#'><b>About Us</b></a>");
