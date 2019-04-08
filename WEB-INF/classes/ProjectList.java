@@ -24,6 +24,7 @@ public class ProjectList extends HttpServlet {
 		toClient.println("<th>Client</th>");
 		toClient.println("<th>Project Manager</th>");
 		toClient.println("<th>Status</th>");
+		toClient.println("<th>Due Date</th>");		
 		
 		
         Vector<ProjectData> ProjectList;
@@ -33,8 +34,7 @@ public class ProjectList extends HttpServlet {
                 toClient.println("<tr>");
 				toClient.println("<td><a href='ProjectView?id=" + project.projectId + "'>"+ project.projectId +"</a></td>");
                 toClient.println("<td>" + project.companyName + " </td>");
-                toClient.println("<td>" + project.last + " </td>");
-                toClient.println("<td>" + project.first + " </td>");
+                toClient.println("<td>" + project.first+ " "+ project.last +" </td>");
                 toClient.println("<td>" + project.status + " </td>");
                 
                 toClient.println("<td>" + project.dueDate + " </td>");
