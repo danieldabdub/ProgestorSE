@@ -14,8 +14,9 @@ public class QualificationData{
 	String qualification;
 	String description;
     
-    // Primer Constructor
-    //PONER TODOS LOS QUE FALTAN ABAJO
+    // Primer Constructor: - getQualificationList
+    //                     - getQualification
+    
     QualificationData (String qualificationId, String qualification, String description){
         this.qualificationId = qualificationId;
 		this.qualification = qualification;
@@ -26,9 +27,7 @@ public class QualificationData{
         
         Vector<QualificationData> vec = new Vector<QualificationData>();
         
-        //ESCRIBIR SQL
-        
-        String sql = "";
+        String sql = "SELECT qualificationId, qualification, description FROM Qualifications";
         System.out.println("getQualificationList: " + sql);
         
         try {
@@ -36,11 +35,12 @@ public class QualificationData{
             ResultSet result = statement.executeQuery(sql);
             
             while(result.next()) {
-                
-                // CAMBIAR! SEGUN LAS BD
+
                 
                 QualificationData qualification = new QualificationData(
-                    result.getString("qualificationId")
+                    result.getString("qualificationId"),
+                    result.getString("qualification"),
+                    result.getString("description")
                 );
                 
                 vec.addElement(qualification);
@@ -53,11 +53,9 @@ public class QualificationData{
         return vec;
     }
     
-    public static Vector<QualificationData> getQualification(Connection connection, String qualificationId){
+    public static QualificationData getQualification(Connection connection, String qualificationId){
         
-        
-        //ESCRIBIR SQL!
-        String sql = "";
+        String sql = "SELECT qualificationId, qualification, description FROM Qualifications WHERE qualificationId=?";
         System.out.println("getQualification: " + sql);
         
         QualificationData qualification = null;
@@ -70,8 +68,9 @@ public class QualificationData{
             
             if(result.next()){
                 qualification = new QualificationData(
-                    //ME FALTARIAN COSAS AQUI!
-                    result.getString("qualificationId")
+                    result.getString("qualificationId"),
+                    result.getString("qualification"),
+                    result.getString("description")
                 );  
             }
             result.close();
@@ -86,8 +85,11 @@ public class QualificationData{
     }
     
     public static int updateQualification(Connection connection, QualificationData qualification){
-        //ESCRIBIR SQL!!!!
-        String sql="";
+
+        String sql="UPDATE Qualifications";
+        sql += "SET description=?";
+        sql += "WHERE qualificationId=?";
+        
         System.out.println("updateQualification: " + sql);
         
         int n = 0;
@@ -95,10 +97,8 @@ public class QualificationData{
         try {
             PreparedStatement stmtUpdate= connection.prepareStatement(sql);
             
+            stmtUpdate.setString(1,qualification.description);
             stmtUpdate.setString(1,qualification.qualificationId);
-//            stmtUpdate.setInt(2,product.supplierId);
-//            stmtUpdate.setFloat(3,product.unitPrice);
-//            stmtUpdate.setString(4,product.productId); CAMBIAR ESTO!
             
             n = stmtUpdate.executeUpdate();
             stmtUpdate.close();
