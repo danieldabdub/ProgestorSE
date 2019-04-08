@@ -99,7 +99,7 @@ public class ProjectData{
         return vec;
     }
    
-    public static Vector<ProjectData> getActiveProjectList(Connection connection){
+  /*   public static Vector<ProjectData> getActiveProjectList(Connection connection){
         
         Vector<ProjectData> vec = new Vector<ProjectData>();
         
@@ -122,8 +122,8 @@ public class ProjectData{
                 ProjectData project = new ProjectData(
                     result.getString("projectId"),
                     result.getString("companyName"),
-                    result.getDate("startDate"),
-                    result.getDate("dueDate")
+                    result.getString("startMonth"),
+                    result.getString("dueMonth")
                 );
                 
                 vec.addElement(project);
@@ -135,7 +135,7 @@ public class ProjectData{
         }
         return vec;
     }
-    
+     */
     // Ojo: cuando este listo Clients hacerlo.
     /*public static Vector<ProjectData> getClientProjectList(Connection connection, String clientId){
         

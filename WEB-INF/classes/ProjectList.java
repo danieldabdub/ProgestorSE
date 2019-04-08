@@ -45,6 +45,7 @@ public class ProjectList extends HttpServlet {
 
 
         }
+		
 		toClient.println(Utils.footer());
 		toClient.println("</tbody>");
 		toClient.println("</tr>");
@@ -56,5 +57,5 @@ public class ProjectList extends HttpServlet {
 		toClient.println("</form>");
 		toClient.println("</body>");
         toClient.close();
-    }
+	}
 }

@@ -51,7 +51,7 @@ public class Utils {
     
     public static String footer(){
         StringBuilder str = new StringBuilder();
-        str.append("<div style='text-align: right;' class='navbar'>");
+        str.append("<div style='text-align: right;' class='navbardash'>");
         str.append("<a href='#'><b>About Us</b></a>");
         str.append("<a href='Search.html'>Search</a>");
         str.append("<a href='Notifications.html'>Notifications</a>");
@@ -63,7 +63,11 @@ public class Utils {
         str.append("<p> <font color='white'>Sancho el sabio nº8 8 Izq. </font></p>");
         str.append("<p> <font color='white'>654-321-000 </font></p>");
         str.append("<p> <font color='white'>help@progestor.es</font></p>");
-        str.append("<p> <font color='white'>help@progestor.es</font></p>");
         return str.toString();
+		
+		
     }
-}
+	
+
+    }
+
