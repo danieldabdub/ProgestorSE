@@ -48,6 +48,19 @@ public class ProjectData{
         this.dueDate = dueDate;
     
     }
+	
+	//este constructor se usara para ProjectUpdate
+	    ProjectData (String projectId, String companyName,String last, String first, Date startDate, String status, Date dueDate){
+        
+        this.projectId = projectId;
+		this.companyName = companyName;
+		this.last=last;
+		this.first=first;
+        this.startDate = startDate;
+		this.status=status;
+        this.dueDate = dueDate;
+    
+    }
     
     public static Vector<ProjectData> getProjectList(Connection connection){
         

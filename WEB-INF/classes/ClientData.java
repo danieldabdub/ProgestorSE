@@ -11,12 +11,18 @@ public class ClientData{
     // Poner aqui los nombres que finalmente se usen.
     
     String clientId;
+	String companyName;
     
     
     // Primer Constructor
     //PONER TODOS LOS QUE FALTAN ABAJO
     ClientData (String clientId){
         this.clientId = clientId;
+    }
+	
+	    ClientData (String clientId, String CompanyName){
+        this.clientId = clientId;
+		this.companyName = companyName;
     }
     
      public static Vector<ClientData> getClientList(Connection connection){
@@ -37,7 +43,8 @@ public class ClientData{
                 // CAMBIAR! SEGUN LAS BD
                 
                 ClientData client = new ClientData(
-                    result.getString("clientId")
+                    result.getString("clientId"),
+					result.getString("companyName")
                 );
                 
                 vec.addElement(client);
@@ -50,7 +57,7 @@ public class ClientData{
         return vec;
     }
     
-    public static Vector<ClientData> getClient(Connection connection, String clientId){
+    public static ClientData getClient(Connection connection, String clientId){
         
         
         //ESCRIBIR SQL!
