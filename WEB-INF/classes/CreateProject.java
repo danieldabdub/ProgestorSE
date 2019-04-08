@@ -25,7 +25,7 @@ public class CreateProject extends HttpServlet {
 		toClient.println("<th>Client</th>");
 		toClient.println("<th>Project Manager</th>");
 		toClient.println("<th>Status</th>");
-		
+	}	
 		
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException  {
         res.setContentType("text/html");

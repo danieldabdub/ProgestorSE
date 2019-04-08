@@ -42,6 +42,7 @@ public class ProductEdit extends HttpServlet {
         System.out.println("Client: " + client);
         toClient.println("<td><input name='client' value='" + client + "'></td></tr>");
 		
+		
         toClient.println("<tr><td>Project Manager</td>");
         toClient.println("<td><input name='projectManager' value='" + project.manager + "'></td>");
 		
