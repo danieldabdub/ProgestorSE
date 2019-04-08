@@ -35,7 +35,7 @@ public class Utils {
         str.append("<a href='Search.html'>Search</a>");
         str.append("<a href='Notifications.html'>Notifications</a>");
         str.append("<a href='Dashboard.html'>Dashboard</a>");
-        str.append("<a href='Projects.html'>Projects</a>");
+        str.append("<a href='ProjectList'>Projects</a>");
         str.append("<a href='Clients.html'>Clients</a>");
         str.append("<a href='Employees.html'>Employees</a>");
         str.append("<a href='Qualifications.html'>Qualifications</a>");
@@ -56,7 +56,7 @@ public class Utils {
         str.append("<a href='Search.html'>Search</a>");
         str.append("<a href='Notifications.html'>Notifications</a>");
         str.append("<a href='Dashboard.html'>Dashboard</a>");
-        str.append("<a href='Projects.html'>Projects</a>");
+        str.append("<a href='ProjectList'>Projects</a>");
         str.append("<a href='Clients.html'>Clients</a>");
         str.append("<a href='Employees.html'>Employees</a>");
         str.append("<a href='Qualifications.html'>Qualifications</a>");
