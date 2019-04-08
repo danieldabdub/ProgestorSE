@@ -158,7 +158,7 @@ public class ProjectData{
 //        String sql = "";
 //        System.out.println("getProject: " + sql);
 //        
-//        ProjectData product = null;
+//        ProjectData project = null;
 //        
 //        try {
 //            PreparedStatement pstmt = connection.prepareStatement(sql);
@@ -176,7 +176,7 @@ public class ProjectData{
 //            pstmt.close();
 //        } catch(SQLException e) {
 //            e.printStackTrace();
-//            System.out.println("Error in getProduct: " + sql + " Exception: " + e);
+//            System.out.println("Error in getProject: " + sql + " Exception: " + e);
 //        }
 //        
 //        return project;
@@ -194,9 +194,9 @@ public class ProjectData{
             PreparedStatement stmtUpdate= connection.prepareStatement(sql);
             
 //            stmtUpdate.setString(1,project.projectId);
-//            stmtUpdate.setInt(2,product.supplierId);
-//            stmtUpdate.setFloat(3,product.unitPrice);
-//            stmtUpdate.setString(4,product.productId); CAMBIAR ESTO!
+//            stmtUpdate.setInt(2,project.supplierId);
+//            stmtUpdate.setFloat(3,project.unitPrice);
+//            stmtUpdate.setString(4,project.projectId); CAMBIAR ESTO!
             
             n = stmtUpdate.executeUpdate();
             stmtUpdate.close();
