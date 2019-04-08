@@ -150,16 +150,17 @@ public class ProjectData{
         return vec;
     }*/
     
-    // Ojo: terminar 
-//    public static ProjectData getProject(Connection connection, String projectId){
-//        
-//        
-//        //ESCRIBIR SQL!
-//        String sql = "";
-//        System.out.println("getProject: " + sql);
-//        
-//        ProjectData project = null;
-//        
+    // Ojo: terminar
+    
+    public static ProjectData getProject(Connection connection, String projectId){
+        
+        
+        //ESCRIBIR SQL!
+        String sql = "";
+        System.out.println("getProject: " + sql);
+        
+        ProjectData project = null;
+        
 //        try {
 //            PreparedStatement pstmt = connection.prepareStatement(sql);
 //            pstmt.setString(1, projectId);
@@ -178,10 +179,10 @@ public class ProjectData{
 //            e.printStackTrace();
 //            System.out.println("Error in getProject: " + sql + " Exception: " + e);
 //        }
-//        
-//        return project;
-//        
-//    }
+        
+        return project;
+        
+    }
     
     public static int updateProject(Connection connection, ProjectData project){
         //ESCRIBIR SQL!!!!
