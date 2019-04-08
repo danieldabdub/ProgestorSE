@@ -8,26 +8,49 @@ import java.sql.Date;
 
 public class EmployeeData{
     
-    // Poner aqui los nombres que finalmente se usen.
     
     String employeeId;
     String firstName;
     String lastName;
+    Date hireDate;
+    String hiredDate;
+    String phone;
+    String mail;
     
     
-    // Primer Constructor
-    //PONER TODOS LOS QUE FALTAN ABAJO
-    EmployeeData (String employeeId){
+    EmployeeData (String employeeId, String firstName, String lastName, Date hireDate, String phone, String mail){
         this.employeeId = employeeId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.hireDate = hireDate;
+        this.phone = phone;
+        this.mail = mail;
     }
     
-/*     public static Vector<EmployeeData> getEmployeeList(Connection connection){
+    EmployeeData (String employeeId, String firstName, String lastName, String hiredDate, String phone, String mail){
+        this.employeeId = employeeId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.hiredDate = hiredDate;
+        this.phone = phone;
+        this.mail = mail;
+    }    
+    
+    // Constructor para: - getProjectEmployeeList
+    //                   - getQualifiedEmployees
+    
+    EmployeeData(String employeeId, String firstName, String lastName) {
+        this.employeeId = employeeId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+    
+    public static Vector<EmployeeData> getEmployeeList(Connection connection){
         
         Vector<EmployeeData> vec = new Vector<EmployeeData>();
         
-        //ESCRIBIR SQL
         
-        String sql = "";
+        String sql = "SELECT employeeId, firstName, lastName, hireDate, phone, mail FROM Employees";
         System.out.println("getEmployeeList: " + sql);
         
         try {
@@ -35,11 +58,14 @@ public class EmployeeData{
             ResultSet result = statement.executeQuery(sql);
             
             while(result.next()) {
-                
-                // CAMBIAR! SEGUN LAS BD
-                
+
                 EmployeeData employee = new EmployeeData(
-                    result.getString("employeeId")
+                    result.getString("employeeId"),
+                    result.getString("firstName"),
+                    result.getString("lastName"),
+                    result.getDate("hireDate"),
+                    result.getString("phone"),
+                    result.getString("mail")
                 );
                 
                 vec.addElement(employee);
@@ -50,15 +76,15 @@ public class EmployeeData{
             System.out.println("Error in getEmployeeList: " + sql + " Exception: " + e);
         }
         return vec;
-    } */
+    }
     
     public static Vector<EmployeeData> getProjectEmployeeList(Connection connection, String projectId){
         
         Vector<EmployeeData> vec = new Vector<EmployeeData>();
         
-        //ESCRIBIR SQL
         
-        String sql = "";
+        String sql = "SELECT ProjectEmployee.employeeId as employeeId, firstName, lastName FROM ProjectEmployee, Employees";
+        sql += "WHERE ProjectEmployee.employeeId=Employees.employeeId AND projectId=?";
         System.out.println("getProjectEmployeeList: " + sql);
         
         try {
@@ -70,7 +96,9 @@ public class EmployeeData{
             while(result.next()) {
                 
                 EmployeeData employee = new EmployeeData(
-                    result.getString("employeeId")
+                    result.getString("employeeId"),
+                    result.getString("firstName"),
+                    result.getString("lastName")
                 );
                 vec.addElement(employee);
             }
@@ -81,11 +109,9 @@ public class EmployeeData{
         return vec;
     }
     
-    public static Vector<EmployeeData> getEmployee(Connection connection, String employeeId){
+    public static EmployeeData getEmployee(Connection connection, String employeeId){
         
-        
-        //ESCRIBIR SQL!
-        String sql = "";
+        String sql = "SELECT firstName, lastName, hireDate, phone, mail FROM Employees WHERE employeeId=?";
         System.out.println("getEmployee: " + sql);
         
         EmployeeData employee = null;
@@ -93,13 +119,16 @@ public class EmployeeData{
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, employeeId);
-            
             ResultSet result = pstmt.executeQuery();
             
             if(result.next()){
                 employee = new EmployeeData(
-                    //ME FALTARIAN COSAS AQUI!
-                    result.getString("employeeId")
+                    employeeId,
+                    result.getString("firstName"),
+                    result.getString("lastName"),
+                    result.getDate("hireDate"),
+                    result.getString("phone"),
+                    result.getString("mail")
                 );  
             }
             result.close();
@@ -114,20 +143,23 @@ public class EmployeeData{
     }
     
     public static int updateEmployee(Connection connection, EmployeeData employee){
-        //ESCRIBIR SQL!!!!
-        String sql="";
+        
+        String sql="UPDATE Employees";
+        sql += "SET firstName=?, lastName=?, hireDate=?, phone=?, mail=?";
+        sql += "WHERE employeeId=?";
         System.out.println("updateEmployee: " + sql);
         
         int n = 0;
         
         try {
             PreparedStatement stmtUpdate= connection.prepareStatement(sql);
-            
-//            stmtUpdate.setString(1,employee.employeeId);
-//            stmtUpdate.setInt(2,product.supplierId);
-//            stmtUpdate.setFloat(3,product.unitPrice);
-//            stmtUpdate.setString(4,product.productId); CAMBIAR ESTO!
-            
+            stmtUpdate.setString(1,employee.firstName);
+            stmtUpdate.setString(2,employee.lastName);
+            stmtUpdate.setDate(3,employee.hireDate);
+            stmtUpdate.setString(4,employee.phone);
+            stmtUpdate.setString(5,employee.mail);
+            stmtUpdate.setString(6,employee.employeeId);
+
             n = stmtUpdate.executeUpdate();
             stmtUpdate.close();
         } catch(SQLException e){
@@ -143,7 +175,8 @@ public class EmployeeData{
         
         //ESCRIBIR SQL
         
-        String sql = "";
+        String sql = "SELECT EmployeeQualifications.employeeId as employeeId, firstName, lastName FROM EmployeeQualifications, Employees";
+        sql += "WHERE Employees.employeeId=EmployeeQualifications.employeeId AND qualificationId=?";
         System.out.println("getQualifiedEmployee: " + sql);
         
         try {
@@ -155,7 +188,9 @@ public class EmployeeData{
             while(result.next()) {
                 
                 EmployeeData employee = new EmployeeData(
-                    result.getString("employeeId")
+                    result.getString("employeeId"),
+                    result.getString("firstName"),
+                    result.getString("lastName")
                 );
                 vec.addElement(employee);
             }
@@ -165,5 +200,28 @@ public class EmployeeData{
         }
         return vec;
     }
+    
+    public static int insertEmployeeQualification(Connection connection, String employeeId, String qualificationId, String qualificationDate) {
+        String sql="INSERT INTO EmployeeQualificatons (employeeId, qualificationId, qualificationDate)";
+        sql += "VALUES (?,?,?)";
+        System.out.println("insertEmployeeQualifications: " + sql);
+        
+        int n = 0; 
+        
+        try {
+            PreparedStatement stmtUpdate= connection.prepareStatement(sql);
+            stmtUpdate.setString(1,employeeId);
+            stmtUpdate.setString(2,qualificationId);
+            stmtUpdate.setString(3,qualificationDate); //Duda con date
+            n = stmtUpdate.executeUpdate();
+            stmtUpdate.close();
+        } catch(SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error in insertEmployeeQualification: " + sql + " Exception: " + e);
+        }
+        return n;
+        
+    }
         
 }
+
