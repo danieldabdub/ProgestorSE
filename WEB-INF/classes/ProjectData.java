@@ -139,34 +139,35 @@ public class ProjectData{
     }
      */
     // Ojo: cuando este listo Clients hacerlo.
-    /*public static Vector<ProjectData> getClientProjectList(Connection connection, String clientId){
-        
-        Vector<ProjectData> vec = new Vector<ProjectData>();
-        
-        //ESCRIBIR SQL
-        
-        String sql = "";
-        System.out.println("getClientProjectList: " + sql);
-        
-        try {
-            PreparedStatement pstmt=connection.prepareStatement(sql);
-            pstmt.setString(1, clientId);
-            
-            ResultSet result = pstmt.executeQuery();
-            
-            while(result.next()) {
-                
-                ProjectData project = new ProjectData(
-                    result.getString("projectId")
-                );
-                vec.addElement(project);
-            }
-        } catch(SQLException e) {
-            e.printStackTrace();
-            System.out.println("Error in getClientProjectList: " + sql + " Exception: " + e);
-        }
-        return vec;
-    }*/
+    
+//    public static Vector<ProjectData> getClientProjectList(Connection connection, String clientId){
+//        
+//        Vector<ProjectData> vec = new Vector<ProjectData>();
+//        
+//        //ESCRIBIR SQL
+//        
+//        String sql = "SELECT ";
+//        System.out.println("getClientProjectList: " + sql);
+//        
+//        try {
+//            PreparedStatement pstmt=connection.prepareStatement(sql);
+//            pstmt.setString(1, clientId);
+//            
+//            ResultSet result = pstmt.executeQuery();
+//            
+//            while(result.next()) {
+//                
+//                ProjectData project = new ProjectData(
+//                    result.getString("projectId")
+//                );
+//                vec.addElement(project);
+//            }
+//        } catch(SQLException e) {
+//            e.printStackTrace();
+//            System.out.println("Error in getClientProjectList: " + sql + " Exception: " + e);
+//        }
+//        return vec;
+//    }
     
     // Ojo: terminar
     
@@ -179,24 +180,24 @@ public class ProjectData{
         
         ProjectData project = null;
         
-//        try {
-//            PreparedStatement pstmt = connection.prepareStatement(sql);
-//            pstmt.setString(1, projectId);
-//            
-//            ResultSet result = pstmt.executeQuery();
-//            
-//            if(result.next()){
-//                project = new ProjectData(
-//                    //ME FALTARIAN COSAS AQUI!
-//                    result.getString("projectId")
-//                );  
-//            }
-//            result.close();
-//            pstmt.close();
-//        } catch(SQLException e) {
-//            e.printStackTrace();
-//            System.out.println("Error in getProject: " + sql + " Exception: " + e);
-//        }
+        try {
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            pstmt.setString(1, projectId);
+            
+            ResultSet result = pstmt.executeQuery();
+            
+            if(result.next()){
+                project = new ProjectData(
+                    //ME FALTARIAN COSAS AQUI!
+                    result.getString("projectId")
+                );  
+            }
+            result.close();
+            pstmt.close();
+        } catch(SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error in getProject: " + sql + " Exception: " + e);
+        }
         
         return project;
         
