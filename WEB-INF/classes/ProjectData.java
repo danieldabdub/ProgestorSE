@@ -150,15 +150,15 @@ public class ProjectData{
         return vec;
     }
     
-    // Ojo
-    public static Vector<ProjectData> getProject(Connection connection, String projectId){
+    // Ojo: terminar 
+    public static ProjectData getProject(Connection connection, String projectId){
         
         
         //ESCRIBIR SQL!
         String sql = "";
         System.out.println("getProject: " + sql);
         
-        ProductData product = null;
+        ProjectData product = null;
         
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);
