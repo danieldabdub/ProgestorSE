@@ -19,8 +19,7 @@ public class Dashboard extends HttpServlet {
         PrintWriter toClient = res.getWriter();
 //        String categoryId = req.getParameter("id");
 // OJO! Aqui como seria el header?
-        toClient.println(Utils.header("DashBoard"));
-        toClient.println("<h1>Dashboard</h1>");
+        toClient.println(Utils.headerD("Dashboard"));
         Vector<ProjectData> activeProjectList;
         
         activeProjectList = ProjectData.getActiveProjectList(connection);
