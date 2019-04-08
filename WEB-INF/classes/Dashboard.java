@@ -20,28 +20,28 @@ public class Dashboard extends HttpServlet {
 //        String categoryId = req.getParameter("id");
 // OJO! Aqui como seria el header?
         toClient.println(Utils.header());
-        toClient.println('<h1>Dashboard</h1>')
+        toClient.println("<h1>Dashboard</h1>")
         Vector<ProjectData> activeProjectList;
         
         activeProjectList = ProjectData.getActiveProjectList(connection);
         
-        toClient.println('<div class="gantt">');
-        toClient.println('<div class="gantt__row gantt__row--months">');
-        toClient.println('<div class="gantt__row-first"></div>');
-        toClient.println('<span>Jan</span><span>Feb</span><span>Mar</span>');
-        toClient.println('<span>Apr</span><span>May</span><span>Jun</span>');
-        toClient.println('<span>Jul</span><span>Aug</span><span>Sep</span>');
-        toClient.println('<span>Oct</span><span>Nov</span><span>Dec</span>');
-        toClient.println('</div>');
+        toClient.println("<div class='gantt'>");
+        toClient.println("<div class='gantt__row gantt__row--months'>");
+        toClient.println("<div class='gantt__row-first'></div>");
+        toClient.println("<span>Jan</span><span>Feb</span><span>Mar</span>");
+        toClient.println("<span>Apr</span><span>May</span><span>Jun</span>");
+        toClient.println("<span>Jul</span><span>Aug</span><span>Sep</span>");
+        toClient.println("<span>Oct</span><span>Nov</span><span>Dec</span>");
+        toClient.println("</div>");
         
         // OJO CON ESTE 5 ABAJO!
         
-        toClient.println('<div class="gantt__row gantt__row--lines" data-month="5">');
-        toClient.println('<span></span><span></span><span></span>');
-        toClient.println('<span></span><span></span><span></span>');
-        toClient.println('<span></span><span class="marker"></span><span></span>');
-        toClient.println('<span></span><span></span><span></span>');
-        toClient.println('</div>');
+        toClient.println("<div class='gantt__row gantt__row--lines' data-month='5'>");
+        toClient.println("<span></span><span></span><span></span>");
+        toClient.println("<span></span><span></span><span></span>");
+        toClient.println("<span></span><span></span><span></span>");
+        toClient.println("<span></span><span></span><span></span>");
+        toClient.println("</div>");
         
         for(int i=0; i< activeProjectList.size(); i++){
             
@@ -50,15 +50,17 @@ public class Dashboard extends HttpServlet {
             // OJO CON EL CLIENT ID! y OJO! Aqui tuviera que hacer otro constructor!
             // Seria interesante cambiar de color!
             
-                toClient.println('<div class="gantt__row">');
-                toClient.println('<div class="gantt__row-first">'+project.clientId);
-                toClient.println('</div>');
+                toClient.println("<div class='gantt__row'>");
+                toClient.println("<div class=gantt__row-first'>"+project.clientId);
+                toClient.println("</div>");
             
-                toClient.println('<ul class="gantt__row-bars">');
+                toClient.println("<ul class='gantt__row-bars'>");
             
 // Ojo aqui con los MESES!
+
+// Seria interesante jugar con los colores
             
-                toClient.println('<li style="grid-column: '+ project.StartMonth +'/'+ project.DueMonth+'; background-color: #2ecaac;">' + project.projectId + '</li></ul></div>');
+                toClient.println("<li style='grid-column: "+ project.StartMonth +"/"+ project.DueMonth+"; background-color: #2ecaac;'>" + project.projectId + "</li></ul></div>");
                 
         }
 

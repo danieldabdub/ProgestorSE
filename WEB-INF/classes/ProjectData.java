@@ -11,30 +11,42 @@ public class ProjectData{
     // Poner aqui los nombres que finalmente se usen.
     
     String projectId;
-	String companyName;
-    String first;
+    String companyName;
     String last;
+    String first;
     String status;
+	Date dueDate;
+    String countryName;
     
     
-    // Primer Constructor
-    //PONER TODOS LOS QUE FALTAN ABAJO
-    ProjectData (String projectId, String companyName, String first, String last, String status){
+    // Primer Constructor: - getProjectList
+    
+    ProjectData (String projectId, String companyName, String first, String last, String status, Date dueDate){
+        
         this.projectId = projectId;
 		this.companyName = companyName;
+        
+        // PM Complete Name
+        
+        this.last = last;
 		this.first = first;
-		this.last = last;
+		
+        
 		this.status = status;
+        this.dueDate = dueDate;
+        
     }
     
     public static Vector<ProjectData> getProjectList(Connection connection){
         
         Vector<ProjectData> vec = new Vector<ProjectData>();
-        String sql = "SELECT projectId, companyName, first, last, status FROM Projects, Clients, ProjectManagers WHERE Clients.clientId=Projects.clientId AND ProjectManagers.managerId=Projects.managerId;";
+        
+        String sql = "SELECT projectId, companyName, last, first, status, dueDate FROM Projects, Clients, ProjectManagers WHERE Clients.clientId=Projects.clientId AND ProjectManagers.managerId=Projects.managerId;";
 
         System.out.println("getProjectList: "+ sql);
        
         try {
+            
             Statement statement=connection.createStatement();
             ResultSet result = statement.executeQuery(sql);
             
@@ -43,10 +55,10 @@ public class ProjectData{
                 ProjectData project = new ProjectData(
                     result.getString("projectId"),
 					result.getString("companyName"),
-					result.getString("first"),
 					result.getString("last"),
-					result.getString("status")
-					
+					result.getString("first"),
+					result.getString("status"),
+					result.getDate("dueDate")
                 );
                 
                 vec.addElement(project);
