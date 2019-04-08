@@ -20,7 +20,7 @@ public class menu extends HttpServlet {
         
         
         
-        toClient.println(Utils.header());
+        toClient.println(Utils.header("Home"));
         
         toClient.println("<body>");
         toClient.println("<div class='navbar-inner'>");

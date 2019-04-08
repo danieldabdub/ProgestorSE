@@ -11,11 +11,15 @@ public class QualificationData{
     // Poner aqui los nombres que finalmente se usen.
     
     String qualificationId;
+	String qualification;
+	String description;
     
     // Primer Constructor
     //PONER TODOS LOS QUE FALTAN ABAJO
-    QualificationData (String qualificationId){
+    QualificationData (String qualificationId, String qualification, String description){
         this.qualificationId = qualificationId;
+		this.qualification = qualification;
+		this.description = description;
     }
     
     public static Vector<QualificationData> getQualificationList(Connection connection){

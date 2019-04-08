@@ -19,7 +19,7 @@ public class Dashboard extends HttpServlet {
         PrintWriter toClient = res.getWriter();
 //        String categoryId = req.getParameter("id");
 // OJO! Aqui como seria el header?
-        toClient.println(Utils.header());
+        toClient.println(Utils.header("DashBoard"));
         toClient.println("<h1>Dashboard</h1>");
         Vector<ProjectData> activeProjectList;
         
@@ -51,7 +51,7 @@ public class Dashboard extends HttpServlet {
             // Seria interesante cambiar de color!
             
                 toClient.println("<div class='gantt__row'>");
-                toClient.println("<div class=gantt__row-first'>"+project.clientId);
+                toClient.println("<div class=gantt__row-first'>" + project.clientId);
                 toClient.println("</div>");
             
                 toClient.println("<ul class='gantt__row-bars'>");

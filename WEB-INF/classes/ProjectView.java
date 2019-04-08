@@ -18,7 +18,7 @@ public class ProjectView {
 		str.append("<tr><td>Client</td>");
         str.append("<td>" + project.clientId + "</td>");
 		str.append("<tr><td>Project Manager</td>");
-        str.append("<td>" + project.projectManager + "</td></tr>");
+        str.append("<td>" + project.first + project.last +"</td></tr>");
 		str.append("<tr><td>Start Date</td>");
         str.append("<td>" + project.startDate + "</td></tr>");
 		str.append("<tr><td>Status</td>");
@@ -51,8 +51,8 @@ public class ProjectView {
         for(int i=0; i< employeesProject.size(); i++){
             EmployeeData employees = employeesProject.elementAt(i);
             str.append("<tr>");
-            str.append("<td>" + employees.FirstName + " </td>");			
-   			str.append("<td>" + employees.LastName + " </td>");
+            str.append("<td>" + employees.firstName + " </td>");			
+   			str.append("<td>" + employees.lastName + " </td>");
 			
 			//agregar mas atributos	
 			str.append("</tr>");
