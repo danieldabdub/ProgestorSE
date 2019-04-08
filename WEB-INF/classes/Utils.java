@@ -31,7 +31,7 @@ public class Utils {
         str.append("</A>");
         str.append("<title>"+ title +"</title>");
         str.append("<link rel='stylesheet' type='text/css' href='style.css'></head>");
-        str.append("<link rel='stylesheet' type='text/css' href='style.css'>")
+        str.append("<link rel='stylesheet' type='text/css' href='style.css'>");
         
         str.append("<div class='dropdown' style='float: right;'>");
         str.append("<button  class='dropbtn'><b>__<br>__<br>__</b></button>");

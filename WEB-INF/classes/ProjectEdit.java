@@ -21,14 +21,11 @@ public class ProjectEdit extends HttpServlet {
         res.setContentType("text/html");
         PrintWriter toClient = res.getWriter();
 
-		
+        toClient.println("<form action='ProjectUpdate' method='GET'>");		
 		//desde ProjectView, al darle al boton paso un hidden value llamado "id".
         String idStr = req.getParameter("id");
 		
-		//i call the method getProduct from the ProductData (in ProductData.java file)  class to grab info from the DATABASE 
-		//in the method definition we defined two parameters:
-		//1. connection =to establish connection with the DATABASE
-		//2. idStr = an identifier that I will use to execute a pre-made SQL-SELECT instruction to get info from the Database
+
         ProjectData project = ProjectData.getProject(connection, idStr);
 		
 		toClient.println(Utils.header("Edit Project " + project.projectId));
@@ -43,8 +40,10 @@ public class ProjectEdit extends HttpServlet {
         toClient.println("<td><input name='companyName' value='" + project.companyName + "'></td></tr>");
 
 		toClient.println("<tr><td>Manager</td>");
-        toClient.println("<td><input name='last' value='" + project.first+ " " + project.last + "'></td>");		
+        toClient.println("<td><input name='first' value='" + project.first + "'></td>");		
 	
+	toClient.println("<tr><td>Last</td>");
+        toClient.println("<td><input name='last' value='" + project.last + "'></td>");
 		
         toClient.println("<tr><td>Start Date</td>");
         toClient.println("<td><input name='startDate' value='" + project.startDate + "'></td>");
@@ -57,9 +56,15 @@ public class ProjectEdit extends HttpServlet {
 		 toClient.println("<tr><td>DueDate</td>");
         toClient.println("<td><input name='dueDate' value='" + project.dueDate + "'></td>");
         toClient.println("</tr>");
+		
+		toClient.println("<tr><td>Country</td>");
+        toClient.println("<td><input name='countryName' value='" + project.countryName + "'></td>");
+        toClient.println("</tr>");
 
         toClient.println("</table>");
-        toClient.println("<input type='submit'>");
+		toClient.println("<div style='text-align: right;'>");
+		toClient.println("<button class='button button1'  type='submit'>Submit</button>");
+		toClient.println("</div>");
         toClient.println("</form>");
 		
         toClient.println(Utils.footer());

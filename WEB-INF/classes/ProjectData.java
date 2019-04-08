@@ -227,7 +227,7 @@ public class ProjectData{
            stmtUpdate.setString(1,project.companyName);
            stmtUpdate.setString(2,project.first);
            stmtUpdate.setString(3,project.last);
-		   stmtUpdate.setDate(4,project.dueDate);
+		   stmtUpdate.setDate(4,project.startDate);
            stmtUpdate.setString(5,project.status);
 		   stmtUpdate.setDate(6,project.dueDate);
 		   stmtUpdate.setString(7,project.countryName);
