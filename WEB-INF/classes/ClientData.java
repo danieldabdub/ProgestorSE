@@ -12,17 +12,28 @@ public class ClientData{
     
     String clientId;
 	String companyName;
-    
-    
-    // Primer Constructor
-    //PONER TODOS LOS QUE FALTAN ABAJO
-    ClientData (String clientId){
+    String countryHq;
+    String contact;
+    String phone;
+    String mail;
+        
+    // Primer Constructor: -getClientList
+
+    ClientData (String clientId, String companyName, String countryHq){
         this.clientId = clientId;
+        this.companyName = companyName;
+        this.countryHq = countryHq;
     }
-	
-	    ClientData (String clientId, String CompanyName){
+    
+    // Segundo Contructor: -getClient
+    
+    ClientData (String clientId, String companyName, String countryHq, String contact, String phone, String mail){
         this.clientId = clientId;
-		this.companyName = companyName;
+        this.companyName = companyName;
+        this.countryHq = countryHq;
+        this.contact = contact;
+        this.phone = phone;
+        this.mail = mail;
     }
     
      public static Vector<ClientData> getClientList(Connection connection){
@@ -31,20 +42,21 @@ public class ClientData{
         
         //ESCRIBIR SQL
         
-        String sql = "";
+        String sql = "SELECT clientId, companyName, countryHq FROM Clients";
+         
         System.out.println("getClientList: " + sql);
         
         try {
+            
             Statement statement=connection.createStatement();
             ResultSet result = statement.executeQuery(sql);
             
             while(result.next()) {
                 
-                // CAMBIAR! SEGUN LAS BD
-                
                 ClientData client = new ClientData(
                     result.getString("clientId"),
-					result.getString("companyName")
+					result.getString("companyName"),
+                    result.getString("countryHq")
                 );
                 
                 vec.addElement(client);
