@@ -1,75 +1,90 @@
 import java.util.Vector;
+import java.io.*;
+import java.util.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.sql.Connection;
 
-public class ProjectView {
-    public static String getProjectInfo(ProjectData project) {
-		
-		//esto funcionará con javascript------falta por hacer
-		
-        StringBuilder str = new StringBuilder();
-		
-		//titulo
-		str.append(Utils.header(project.projectId));
-		
-		//tabla
-		//aqui cojo el javascript que falta
-        str.append("<table class= 'Table1' id='project' >");
-        str.append("<tr><td>ProjectId</td>");
-        str.append("<td>" + project.projectId + "</td></tr>");
-		str.append("<tr><td>Client</td>");
-        str.append("<td>" + project.clientId + "</td>");
-		str.append("<tr><td>Project Manager</td>");
-        str.append("<td>" + project.first + project.last +"</td></tr>");
-		str.append("<tr><td>Start Date</td>");
-        str.append("<td>" + project.startDate + "</td></tr>");
-		str.append("<tr><td>Status</td>");
-        str.append("<td>" + project.status + "</td></tr>");
-		str.append("<tr><td>Due Date</td>");
-        str.append("<td>" + project.dueDate + "</td>");
-        str.append("<tr><td>Number of employees</td>");
-        str.append("<td>" + project.numberOfEmployees + "</td>");
-		
-        str.append("</tr>");
-        str.append("</table>");
-		
-		//boton
-		str.append( "<form method='get' action='ProjectEdit'> ");
-			str.append("<input type= 'hidden' name= 'id' value = " + project.projectId + ">");
-			str.append("<div style='text-align: right; '>" );
-				str.append("<button  class='button button1' type='submit'>Edit project's information</button>");
-			str.append("</div>" );
-		str.append("</form>" );
+public class ProjectView extends HttpServlet  {
+   
+    Connection connection;
 
-        return str.toString();
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        connection = ConnectionUtils.getConnection(config);
     }
 
-    public static String getProjectEmployees(Vector<EmployeeData> employeesProject) {
+	 public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException  {
+		res.setContentType("text/html");
+        PrintWriter toClient = res.getWriter();
+
+		String idStr = req.getParameter("id");
+		
+		ProjectData project = ProjectData.getProject(connection, idStr);
+		
+		toClient.println(Utils.header("Viewing project  " + project.projectId));
+   
+		
+		//tabla
+		
+        toClient.println("<table class= 'Table1' id='project' >");
+        toClient.println("<tr><td>ProjectId</td>");
+        toClient.println("<td>" + project.projectId + "</td></tr>");
+		toClient.println("<tr><td>Client</td>");
+        toClient.println("<td>" + project.companyName + "</td>");
+		toClient.println("<tr><td>Project Manager</td>");
+        toClient.println("<td>" + project.first + project.last +"</td></tr>");
+		toClient.println("<tr><td>Start Date</td>");
+        toClient.println("<td>" + project.startDate + "</td></tr>");
+		toClient.println("<tr><td>Status</td>");
+        toClient.println("<td>" + project.status + "</td></tr>");
+		toClient.println("<tr><td>Due Date</td>");
+        toClient.println("<td>" + project.dueDate + "</td>");
+		toClient.println("<tr><td>Country</td>");
+        toClient.println("<td>" + project.countryName + "</td>");
+		
+        toClient.println("</tr>");
+        toClient.println("</table>");
+		
+		//boton
+		toClient.println( "<form method='get' action='ProjectEdit'> ");
+			toClient.println("<input type= 'hidden' name= 'id' value = " + project.projectId + ">");
+			toClient.println("<div style='text-align: right; '>" );
+				toClient.println("<button  class='button button1' type='submit'>Edit project's information</button>");
+			toClient.println("</div>" );
+		toClient.println("</form>" );
+
+     
+    
+
+/*     public static String getProjectEmployees(Vector<EmployeeData> employeesProject) {
         StringBuilder str = new StringBuilder();
 		
 		//tabla lista empleados
-        str.append("<table class='Table1'>");
+        toClient.println("<table class='Table1'>");
 		
         for(int i=0; i< employeesProject.size(); i++){
             EmployeeData employees = employeesProject.elementAt(i);
-            str.append("<tr>");
-            str.append("<td>" + employees.firstName + " </td>");			
-   			str.append("<td>" + employees.lastName + " </td>");
+            toClient.println("<tr>");
+            toClient.println("<td>" + employees.firstName + " " + employee.LastName + "</td>");			
+
 			
 			//agregar mas atributos	
-			str.append("</tr>");
+			toClient.println("</tr>");
         }   
 		
-		str.append("</table>");
+		toClient.println("</table>"); */
 		
 		//boton
-		str.append(Util.footer());
-		str.append( "<form method='get' action='AddEmployeeProject'>");
-			str.append("<div style='text-align: right; '>" );
-				str.append("<button  class='button button1' type='submit'>Add new employee</button>");
-			str.append("</div>" );
-		str.append("</form>" );
+		toClient.println(Util.footer());
+		toClient.println( "<form method='get' action='AddEmployeeProject'>");
+			toClient.println("<div style='text-align: right; '>" );
+				toClient.println("<button  class='button button1' type='submit'>Add new employee</button>");
+			toClient.println("</div>" );
+		toClient.println("</form>" );
 			
         
 
-        return str.toString();
+        
     }
 }
