@@ -76,7 +76,7 @@ public class ProjectView extends HttpServlet  {
 		toClient.println("</table>"); */
 		
 		//boton
-		toClient.println(Util.footer());
+		toClient.println(Utils.footer());
 		toClient.println( "<form method='get' action='AddEmployeeProject'>");
 			toClient.println("<div style='text-align: right; '>" );
 				toClient.println("<button  class='button button1' type='submit'>Add new employee</button>");
