@@ -15,6 +15,7 @@ public class ProjectData{
     String last;
     String first;
     String status;
+    Date startDate;
 	Date dueDate;
     String countryName;
     
@@ -35,6 +36,17 @@ public class ProjectData{
 		this.status = status;
         this.dueDate = dueDate;
         
+    }
+    
+    // Segundo Constructor: - getActiveProjectList
+    
+    ProjectData (String projectId, String companyName, Date startDate, Date dueDate){
+        
+        this.projectId = projectId;
+		this.companyName = companyName;
+        this.startDate = startDate;
+        this.dueDate = dueDate;
+    
     }
     
     public static Vector<ProjectData> getProjectList(Connection connection){
@@ -77,7 +89,10 @@ public class ProjectData{
         
         //ESCRIBIR SQL CON LA CONDICION DE QUE ESTE ACTIVO
         
-        String sql = "";
+        // Verificar el "In progress"
+        
+        String sql = "SELECT projectId, companyName, startDate, dueDate FROM Projects, Clients WHERE Clients.clientId=Projects.clientId AND status='In progress'";
+        
         System.out.println("getActiveProjectList: " + sql);
         
         try {
@@ -89,7 +104,10 @@ public class ProjectData{
                 // CAMBIAR! SEGUN LAS BD
                 
                 ProjectData project = new ProjectData(
-                    result.getString("projectId")
+                    result.getString("projectId"),
+                    result.getString("companyName"),
+                    result.getDate("startDate"),
+                    result.getDate("dueDate")
                 );
                 
                 vec.addElement(project);
