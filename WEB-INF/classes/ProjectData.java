@@ -76,6 +76,18 @@ public class ProjectData{
 		this.countryName=countryName;
     
     }
+	ProjectData (String projectId, String companyName,String first, String last, String startDate, String status, String dueDate, String countryName){
+        
+        this.projectId = projectId;
+		this.companyName = companyName;
+		this.first=first;
+		this.last=last;
+        this.startDate = startDate;
+		this.status=status;
+        this.dueDate = dueDate;
+		this.countryName=countryName;
+    
+    }
     
     
     public static Vector<ProjectData> getProjectList(Connection connection){
