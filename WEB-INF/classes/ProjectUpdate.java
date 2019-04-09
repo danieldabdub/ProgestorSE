@@ -25,9 +25,9 @@ public class ProjectUpdate extends HttpServlet {
                     req.getParameter("client"),
 					req.getParameter("first"),
 					req.getParameter("last"),
-					req.getDate("startDate"),
+					req.getParameter("startDate"),
 					req.getParameter("status"),
-					req.getDate("dueDate"),
+					req.getParameter("dueDate"),
 					req.getParameter("countryName")
                 );
 				
