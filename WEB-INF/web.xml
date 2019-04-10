@@ -65,6 +65,21 @@
         <servlet-name>QualificationList</servlet-name>
         <servlet-class>QualificationList</servlet-class>
     </servlet>
+	
+	<servlet>
+        <servlet-name>QualificationView</servlet-name>
+        <servlet-class>QualificationView</servlet-class>
+    </servlet>
+	
+	<servlet>
+        <servlet-name>EmployeeView</servlet-name>
+        <servlet-class>EmployeeView</servlet-class>
+    </servlet>
+	
+	<servlet>
+        <servlet-name>ClientView</servlet-name>
+        <servlet-class>ClientView</servlet-class>
+    </servlet>
 
 	
     <servlet-mapping>
@@ -131,6 +146,22 @@
         <servlet-name>QualificationList</servlet-name>
         <url-pattern>/QualificationList</url-pattern>
     </servlet-mapping>
+	
+	<servlet-mapping>
+        <servlet-name>QualificationView</servlet-name>
+        <url-pattern>/QualificationView</url-pattern>
+    </servlet-mapping>
+	
+	<servlet-mapping>
+        <servlet-name>ClientView</servlet-name>
+        <url-pattern>/ClientView</url-pattern>
+    </servlet-mapping>
+	
+	<servlet-mapping>
+        <servlet-name>EmployeeView</servlet-name>
+        <url-pattern>/EmployeeView</url-pattern>
+    </servlet-mapping>
+	
 
 
 </web-app>
