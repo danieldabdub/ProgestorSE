@@ -23,6 +23,10 @@ public class CountryData{
 		this.validityTime = validityTime;
     }
     
+    CountryData (String countryName){
+        this.countryName = countryName;
+    }
+    
     public static Vector<CountryData> getCountryList(Connection connection){
         
         Vector<CountryData> vec = new Vector<CountryData>();
@@ -51,6 +55,36 @@ public class CountryData{
             System.out.println("Error in getCountryList: " + sql + " Exception: " + e);
         }
         return vec;
+    }
+    
+    
+    public static Vector<CountryData> getEmployeeCountryList(Connection connection, String employeeId){
+        Vector<CountryData> vec = new Vector<CountryData>();
+        
+        String sql = "SELECT EmployeeCountry.countryName as country FROM EmployeeCountry, Countries";
+        sql += "WHERE EmployeeCountry.countryName=Countries.countryName AND employeeId=?";
+        
+        System.out.println("getCountryEmployeeList: " + sql);
+        
+        try {
+            PreparedStatement pstmt=connection.prepareStatement(sql);
+            pstmt.setString(1, employeeId);
+            
+            ResultSet result = pstmt.executeQuery();
+            
+            while(result.next()) {
+                
+                CountryData country = new CountryData(
+                    result.getString("countryName")
+                );
+                vec.addElement(country);
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error in getCountryEmployeeList: " + sql + " Exception: " + e);
+        }
+        return vec;
+        
     }
     
     public static CountryData getCountry(Connection connection, String countryName){

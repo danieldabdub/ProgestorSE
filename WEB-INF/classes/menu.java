@@ -16,6 +16,7 @@ public class menu extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException  {
         res.setContentType("text/html");
         PrintWriter toClient = res.getWriter();
+        
         String managerId = req.getParameter("managerId");
         
         
