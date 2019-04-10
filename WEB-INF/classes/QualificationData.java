@@ -98,7 +98,7 @@ public class QualificationData{
             PreparedStatement stmtUpdate= connection.prepareStatement(sql);
             
             stmtUpdate.setString(1,qualification.description);
-            stmtUpdate.setString(1,qualification.qualificationId);
+            stmtUpdate.setString(2,qualification.qualificationId);
             
             n = stmtUpdate.executeUpdate();
             stmtUpdate.close();
