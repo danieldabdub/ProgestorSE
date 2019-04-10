@@ -15,8 +15,8 @@ public class EmployeeList extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException  {
         res.setContentType("text/html");
         PrintWriter toClient = res.getWriter();
-
-        toClient.println("<h1> Employees </h1>");
+		
+		toClient.println(Utils.header("Employees"));
 		toClient.println("<table class='Table1'>");
 		toClient.println("<thead>");
 		toClient.println("<tr>");
@@ -36,6 +36,8 @@ public class EmployeeList extends HttpServlet {
 
 
         }
+		
+		toClient.println(Utils.footer());
 		toClient.println("</tbody>");
 		toClient.println("</tr>");
         toClient.println("</table>");
