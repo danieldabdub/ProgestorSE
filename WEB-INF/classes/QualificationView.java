@@ -22,23 +22,23 @@ public class QualificationView extends HttpServlet  {
 
 		String idStr = req.getParameter("id");
 		
-		QualificationData qualification = QualificationData.getQualification(connection, idStr);
+		QualificationData qua = QualificationData.getQualification(connection, idStr);
 		
-		toClient.println(Utils.header("Qualification's description  " + qualification.qualification));
+		toClient.println(Utils.header("Qualification's description  " + qua.qualification));
    
 		
 		//tabla
 		
-        toClient.println("<table class= 'Table1' id='qualificationId' >");
+        toClient.println("<table class= 'Table1' id='qua' >");
         toClient.println("<tr><td>Description</td>");
-        toClient.println("<td>" + qualification.description + "</td></tr>");
+        toClient.println("<td>" + qua.description + "</td></tr>");
 		
         toClient.println("</tr>");
         toClient.println("</table>");
 		
 		//boton
 		toClient.println( "<form method='get' action='QualificationEdit'> ");
-			toClient.println("<input type= 'hidden' name= 'id' value = " + qualification.qualificationId + ">");
+			toClient.println("<input type= 'hidden' name= 'id' value = " + qua.qualificationId + ">");
 			toClient.println("<div style='text-align: right; '>" );
 				toClient.println("<button  class='button button1' type='submit'>Edit Qualification's information</button>");
 			toClient.println("</div>" );
