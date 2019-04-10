@@ -76,18 +76,6 @@ public class ProjectData{
 		this.countryName=countryName;
     
     }
-	ProjectData (String projectId, String companyName,String first, String last, String startDate, String status, String dueDate, String countryName){
-        
-        this.projectId = projectId;
-		this.companyName = companyName;
-		this.first=first;
-		this.last=last;
-        this.startDate = startDate;
-		this.status=status;
-        this.dueDate = dueDate;
-		this.countryName=countryName;
-    
-    }
     
     
     public static Vector<ProjectData> getProjectList(Connection connection){
@@ -244,6 +232,34 @@ public class ProjectData{
 		   stmtUpdate.setDate(6,project.dueDate);
 		   stmtUpdate.setString(7,project.countryName);
 		   stmtUpdate.setString(8,project.projectId);
+            
+            n = stmtUpdate.executeUpdate();
+            stmtUpdate.close();
+        } catch(SQLException e){
+            e.printStackTrace();
+            System.out.println("Error in updateProject: " + sql + " Exception: " + e);   
+        }
+        return n;
+    }
+	
+	public static int updateProject(Connection connection, ProjectData project){
+        String sql="INSERT INTO Projects VALUES(?,?,?,?,?,?,?,?)";
+        System.out.println("updateProject: " + sql);
+        
+        int n = 0;
+        
+        try {
+            PreparedStatement stmtUpdate= connection.prepareStatement(sql);
+			
+           stmtUpdate.setString(1,project.projectId) 
+           stmtUpdate.setString(2,project.companyName);
+           stmtUpdate.setString(3,project.first);
+           stmtUpdate.setString(4,project.last);
+		   stmtUpdate.setDate(5,project.startDate);
+           stmtUpdate.setString(6,project.status);
+		   stmtUpdate.setDate(7,project.dueDate);
+		   stmtUpdate.setString(8,project.countryName);
+		   ;
             
             n = stmtUpdate.executeUpdate();
             stmtUpdate.close();
