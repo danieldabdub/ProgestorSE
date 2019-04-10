@@ -27,10 +27,10 @@ public class QualificationList extends HttpServlet {
         Vector<QualificationData> QualificationList;
         QualificationList= QualificationData.getQualificationList(connection);
         for(int i=0; i< QualificationList.size(); i++){
-                QualificationData qua =QualificationList.elementAt(i);
+                QualificationData qualification =QualificationList.elementAt(i);
                 toClient.println("<tr>");
-				toClient.println("<td><a href='QualificationView?id=" + qua.qualification + "'>"+ qua.qualification +"</a></td>");
-                toClient.println("<td>" + qua.description + " </td>");
+				toClient.println("<td><a href='QualificationView?id=" + qualification.qualificationId + "'>"+ qualification.qualification +"</a></td>");
+                toClient.println("<td>" + qualification.description + " </td>");
                 toClient.println("</tr>");
 
 
