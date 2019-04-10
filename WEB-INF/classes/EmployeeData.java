@@ -109,6 +109,37 @@ public class EmployeeData{
         return vec;
     }
     
+    public static Vector<EmployeeData> getCountryEmployeeList(Connection connection, String countryName){
+        
+        Vector<EmployeeData> vec = new Vector<EmployeeData>();
+        
+        
+        String sql = "SELECT EmployeeCountry.employeeId as employeeId, firstName, lastName FROM EmployeeCountry, Employees";
+        sql += "WHERE EmployeeCountry.employeeId=Employees.employeeId AND countryName=?";
+        System.out.println("getProjectEmployeeList: " + sql);
+        
+        try {
+            PreparedStatement pstmt=connection.prepareStatement(sql);
+            pstmt.setString(1, countryName);
+            
+            ResultSet result = pstmt.executeQuery();
+            
+            while(result.next()) {
+                
+                EmployeeData employee = new EmployeeData(
+                    result.getString("employeeId"),
+                    result.getString("firstName"),
+                    result.getString("lastName")
+                );
+                vec.addElement(employee);
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error in getProjectEmployeeList: " + sql + " Exception: " + e);
+        }
+        return vec;
+    }
+    
     public static EmployeeData getEmployee(Connection connection, String employeeId){
         
         String sql = "SELECT firstName, lastName, hireDate, phone, mail FROM Employees WHERE employeeId=?";

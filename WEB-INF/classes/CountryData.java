@@ -58,7 +58,7 @@ public class CountryData{
     }
     
     
-    public static Vector<CountryData> getCountryEmployeeList(Connection connection, String employeeId){
+    public static Vector<CountryData> getEmployeeCountryList(Connection connection, String employeeId){
         Vector<CountryData> vec = new Vector<CountryData>();
         
         String sql = "SELECT EmployeeCountry.countryName as country FROM EmployeeCountry, Countries";
