@@ -22,7 +22,7 @@ public class ProjectView extends HttpServlet  {
 		
 		ProjectData project = ProjectData.getProject(connection, idStr);
 		
-		toClient.println(Utils.header("Viewing project  " + project.projectId));
+		toClient.println(Utils.header("Project's information  " + project.projectId));
    
 		
 		//tabla
