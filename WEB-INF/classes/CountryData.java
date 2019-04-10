@@ -93,7 +93,7 @@ public class CountryData{
         
         System.out.println("getCountry: " + sql);
         
-        CountryData qualification = null;
+        CountryData country = null;
         
         try {
             PreparedStatement pstmt = connection.prepareStatement(sql);

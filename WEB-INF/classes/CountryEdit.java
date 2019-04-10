@@ -34,7 +34,7 @@ public class CountryEdit extends HttpServlet {
         toClient.println("<tr><td>Country Name</td>");
         toClient.println("<td><input name='countryName' value='" + country.countryName + "'></td></tr>");
         
-		tocountry.println("<tr><td>Processing Time</td>");
+		toClient.println("<tr><td>Processing Time</td>");
         toClient.println("<td><input name='processingTime' value='" + country.processingTime + "'></td></tr>");
 
 		toClient.println("<tr><td>Validity Time</td>");

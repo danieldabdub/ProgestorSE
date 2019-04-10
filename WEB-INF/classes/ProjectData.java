@@ -4,7 +4,10 @@ import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Date;
+//import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ProjectData{
     
@@ -17,6 +20,8 @@ public class ProjectData{
     String status;
     Date startDate;
 	Date dueDate;
+	String startDateStr;
+	String dueDateStr;
     String countryName;
     int startMonth;
     int dueMonth;
@@ -76,18 +81,18 @@ public class ProjectData{
 		this.countryName=countryName;
     
     }
-	ProjectData (String projectId, String companyName,String first, String last, String startDate, String status, String dueDate, String countryName){
+	ProjectData (String projectId, String companyName,String first, String last, String startDateStr, String status, String dueDateStr, String countryName){
         
         this.projectId = projectId;
 		this.companyName = companyName;
 		this.first=first;
 		this.last=last;
-        this.startDate = startDate;
+        this.startDateStr = startDateStr;
 		this.status=status;
-        this.dueDate = dueDate;
+        this.dueDateStr = dueDateStr;
 		this.countryName=countryName;
     
-    }
+    } 
     
     
     public static Vector<ProjectData> getProjectList(Connection connection){
@@ -228,22 +233,35 @@ public class ProjectData{
     }
     
     public static int updateProject(Connection connection, ProjectData project){
-        String sql="UPDATE Projects SET companyName = ?, first = ?, last = ?, stardate=?, status = ?, dueDate = ?, countryName = ? WHERE projectId = ?";
+        String sql="UPDATE Projects SET  status = ? WHERE projectId = ?";
         System.out.println("updateProject: " + sql);
         
         int n = 0;
         
         try {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		
+		java.util.Date utilStartDate = formatter.parse(project.startDateStr);
+		java.sql.Date sqlStartDate = new java.sql.Date(utilStartDate.getTime());
+
+		java.util.Date utilDueDate = formatter.parse(project.dueDateStr);
+		java.sql.Date sqlDueDate = new java.sql.Date(utilDueDate.getTime());
+			
             PreparedStatement stmtUpdate= connection.prepareStatement(sql);
+			//stmtUpdate.setDate(1,project.startDate)
+			stmtUpdate.setString(1,project.status);
+		   //stmtUpdate.setDate(3,project.dueDate);
+		   stmtUpdate.setString(2,project.projectId);
+		   
             
-           stmtUpdate.setString(1,project.companyName);
+          /*  stmtUpdate.setString(1,project.companyName);
            stmtUpdate.setString(2,project.first);
            stmtUpdate.setString(3,project.last);
 		   stmtUpdate.setDate(4,project.startDate);
            stmtUpdate.setString(5,project.status);
 		   stmtUpdate.setDate(6,project.dueDate);
 		   stmtUpdate.setString(7,project.countryName);
-		   stmtUpdate.setString(8,project.projectId);
+		   stmtUpdate.setString(8,project.projectId); */
             
             n = stmtUpdate.executeUpdate();
             stmtUpdate.close();

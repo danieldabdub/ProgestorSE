@@ -24,8 +24,8 @@ public class CountryUpdate extends HttpServlet {
 		
         CountryData country = new CountryData(
                     req.getParameter("countryName"),
-                    req.getParameter("processingTime"),
-					req.getParameter("validityTime")
+                    Integer.parseInt(req.getParameter("processingTime")),
+					Integer.parseInt(req.getParameter("validityTime"))
                 );
 				
         int n = CountryData.updateCountry(connection, country);
