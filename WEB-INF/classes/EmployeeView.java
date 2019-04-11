@@ -126,7 +126,7 @@ public class EmployeeView extends HttpServlet {
 		toClient.println("<input type='hidden' id='empId' value='" + employeeId + "'> </input>");
         toClient.println("<div align='center' id='employeeCountries'></div>");
         toClient.println("<div style='text-align:right;'>");
-        toClient.println("<button class='button button1' id='button2' type='submit' onclick='viewEmployeeCountries()'>View countries</button>");
+        toClient.println("<br><button class='button button1' id='button2' type='submit' onclick='viewEmployeeCountries()'>View countries</button>");
         toClient.println("</div>");
 		toClient.println("<script src=showProjects.js></script>");
     }         

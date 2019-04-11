@@ -24,7 +24,8 @@ public class ProjectList extends HttpServlet {
 		toClient.println("<th>Client</th>");
 		toClient.println("<th>Project Manager</th>");
 		toClient.println("<th>Status</th>");
-		toClient.println("<th>Due Date</th>");		
+		toClient.println("<th>Due Date</th>");
+		toClient.println("</thead>");
 		
 		
         Vector<ProjectData> ProjectList;

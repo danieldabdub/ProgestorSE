@@ -72,6 +72,16 @@
     </servlet>
 	
 	<servlet>
+        <servlet-name>QualificationEdit</servlet-name>
+        <servlet-class>QualificationEdit</servlet-class>
+    </servlet>
+
+	<servlet>
+        <servlet-name>QualificationUpdate</servlet-name>
+        <servlet-class>QualificationUpdate</servlet-class>
+    </servlet>	
+	
+	<servlet>
         <servlet-name>EmployeeView</servlet-name>
         <servlet-class>EmployeeView</servlet-class>
     </servlet>
@@ -80,7 +90,21 @@
         <servlet-name>ClientView</servlet-name>
         <servlet-class>ClientView</servlet-class>
     </servlet>
+	
+	<servlet>
+        <servlet-name>EmployeeUpdate</servlet-name>
+        <servlet-class>EmployeeUpdate</servlet-class>
+    </servlet>	
 
+	<servlet>
+        <servlet-name>EmployeeUpdateQualifications</servlet-name>
+        <servlet-class>EmployeeUpdateQualifications</servlet-class>
+    </servlet>		
+
+	<servlet>
+        <servlet-name>EmployeeEdit</servlet-name>
+        <servlet-class>EmployeeEdit</servlet-class>
+    </servlet>		
 	
     <servlet-mapping>
         <servlet-name>CheckLogin</servlet-name>
@@ -153,6 +177,16 @@
     </servlet-mapping>
 	
 	<servlet-mapping>
+        <servlet-name>QualificationEdit</servlet-name>
+        <url-pattern>/QualificationEdit</url-pattern>
+    </servlet-mapping>	
+	
+	<servlet-mapping>
+        <servlet-name>QualificationUpdate</servlet-name>
+        <url-pattern>/QualificationUpdate</url-pattern>
+    </servlet-mapping>	
+	
+	<servlet-mapping>
         <servlet-name>ClientView</servlet-name>
         <url-pattern>/ClientView</url-pattern>
     </servlet-mapping>
@@ -161,6 +195,21 @@
         <servlet-name>EmployeeView</servlet-name>
         <url-pattern>/EmployeeView</url-pattern>
     </servlet-mapping>
+
+	<servlet-mapping>
+        <servlet-name>EmployeeUpdate</servlet-name>
+        <url-pattern>/EmployeeUpdate</url-pattern>
+    </servlet-mapping>	
+	
+	<servlet-mapping>
+        <servlet-name>EmployeeUpdateQualifications</servlet-name>
+        <url-pattern>/EmployeeUpdateQualifications</url-pattern>
+    </servlet-mapping>		
+
+	<servlet-mapping>
+        <servlet-name>EmployeeEdit</servlet-name>
+        <url-pattern>/EmployeeEdit</url-pattern>
+    </servlet-mapping>		
 	
 
 

@@ -23,13 +23,14 @@ public class EmployeeList extends HttpServlet {
 		toClient.println("<th>Employee ID</th>");
 		toClient.println("<th>First Name </th>");
 		toClient.println("<th>Last Name </th>");
+		toClient.println("</thead>");
 		
         Vector<EmployeeData> EmployeeList;
         EmployeeList= EmployeeData.getEmployeeList(connection);
         for(int i=0; i< EmployeeList.size(); i++){
                 EmployeeData employee =EmployeeList.elementAt(i);
                 toClient.println("<tr>");
-				toClient.println("<td><a href='EmployeeView?id=" + employee.employeeId + "'>"+ employee.employeeId +"</a></td>");
+				toClient.println("<td><a href='EmployeeView?employeeId=" + employee.employeeId + "'>"+ employee.employeeId +"</a></td>");
                 toClient.println("<td>" + employee.firstName + " </td>");
 				toClient.println("<td>" + employee.lastName + " </td>");
                 toClient.println("</tr>");
