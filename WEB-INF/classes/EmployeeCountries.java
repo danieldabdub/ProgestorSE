@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.sql.Date;
 
 @SuppressWarnings("serial")
-public class EmployeeProjects extends HttpServlet {
+public class EmployeeCountries extends HttpServlet {
     Connection connection;
 
     public void init(ServletConfig config) throws ServletException {
@@ -35,10 +35,10 @@ public class EmployeeProjects extends HttpServlet {
         toClient.println("</tr>"); 
         toClient.println("</thead>"); 
         
-        for (int i=0; i<employeeProjects.size();i++) {
-            CountryDate countries = employeeCountries.elementAt(i);
+        for (int i=0; i<employeeCountries.size();i++) {
+            CountryData countries = employeeCountries.elementAt(i);
             toClient.println("<tr>");
-            toClient.println("<td>" + country.countryName + "</td>");
+            toClient.println("<td>" + countries.countryName + "</td>");
             toClient.println("</tr>");
         }
         toClient.println("</table>");
