@@ -38,7 +38,7 @@ public class EmployeeList extends HttpServlet {
 
         }
 		
-		toClient.println(Utils.footer());
+		
 		toClient.println("</tbody>");
 		toClient.println("</tr>");
         toClient.println("</table>");
@@ -47,6 +47,7 @@ public class EmployeeList extends HttpServlet {
 		toClient.println("<button class='button button1'  type='submit'>Create Client</button>");
 		toClient.println("</div>");
 		toClient.println("</form>");
+		toClient.println(Utils.footer());
 		toClient.println("</body>");
         toClient.close();
     }
