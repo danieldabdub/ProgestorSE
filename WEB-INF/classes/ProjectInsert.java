@@ -28,31 +28,31 @@ public class ProjectInsert extends HttpServlet {
 		
         toClient.println("<table id='newProjectTable' class='Table1'>");
         toClient.println("<tr><td>ProjectId </td>");
-        toClient.println("<td><input name='projectId'></input></td></tr>");
+        toClient.println("<td><input name='projectId' style='width:198px'></input></td></tr>");
         
 		toClient.println("<tr><td>Client</td>");
-        toClient.println("<td><select id='companyName' name='clientId'></select></td></tr>");
+        toClient.println("<td><select id='companyName' name='clientId'style='width:198px'></select></td></tr>");
 		toClient.println("<input type='hidden' id='selectedClient' name='selectedClientId'>");
 		
 		
 		toClient.println("<tr><td>Manager</td>");
-        toClient.println("<td><select id='manager' name='managerId' ></select></td>");
+        toClient.println("<td><select id='manager' name='managerId' style='width:198px'></select></td>");
 		toClient.println("<input type='hidden' id='selectedManager' name='managerId'>");		
 		
         toClient.println("<tr><td>Start Date</td>");
-        toClient.println("<td><input type='date' name='startDate'></td>");
+        toClient.println("<td><input type='date' name='startDate' style='width:198px'></td>");
         toClient.println("</tr>");
 		
 		toClient.println("<tr><td>Status</td>");
-        toClient.println("<td><input name='status'></td>");
+        toClient.println("<td><input name='status' style='width:198px'></td>");
         toClient.println("</tr>");
 		
 		 toClient.println("<tr><td>DueDate</td>");
-        toClient.println("<td><input type='date' name='dueDate'></td>");
+        toClient.println("<td><input type='date' name='dueDate' style='width:198px'></td>");
         toClient.println("</tr>");
 		
 		toClient.println("<tr><td>Country</td>");
-        toClient.println("<td><select id='countryName' name='countryName'></td>");
+        toClient.println("<td><select id='countryName' name='countryName' style='width:198px'></td>");
 		toClient.println("<input type='hidden' id='selectedCountry' name='countryName'>");
         toClient.println("</tr>");
 
