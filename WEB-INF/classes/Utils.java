@@ -2,7 +2,7 @@ public class Utils {
     public static String header(String title) {
         StringBuilder str = new StringBuilder();
         str.append("<head>");
-        str.append("<A HREF='Menu.html'>");
+        str.append("<A HREF='menu'>");
         str.append("<IMG SRC='logo.png' style='left;width:266,7px;height:150px;'>");
         str.append("</A>");
         str.append("<title>"+ title +"</title>");
@@ -79,7 +79,7 @@ public class Utils {
         str.append("<a href='ClientList'>Clients</a>");
         str.append("<a href='EmployeeList'>Employees</a>");
         str.append("<a href='QualificationList'>Qualifications</a>");
-        str.append("<p> <font color='white'>Sancho el sabio nº8 8 Izq. </font></p>");
+        str.append("<p> <font color='white'>Sancho el sabio n8 / 8 Izq. </font></p>");
         str.append("<p> <font color='white'>654-321-000 </font></p>");
         str.append("<p> <font color='white'>help@progestor.es</font></p>");
         return str.toString();

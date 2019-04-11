@@ -23,6 +23,7 @@ public class EmployeeList extends HttpServlet {
 		toClient.println("<th>Employee ID</th>");
 		toClient.println("<th>First Name </th>");
 		toClient.println("<th>Last Name </th>");
+		toClient.println("</thead>");
 		
         Vector<EmployeeData> EmployeeList;
         EmployeeList= EmployeeData.getEmployeeList(connection);
