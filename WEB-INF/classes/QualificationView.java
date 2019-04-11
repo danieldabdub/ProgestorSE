@@ -29,7 +29,7 @@ public class QualificationView extends HttpServlet  {
 		
 		//tabla
 		
-        toClient.println("<table class= 'Table1' id='qua' >");
+        toClient.println("<table class= 'Table1' id='qualif' >");
         toClient.println("<tr><td>Description</td>");
         toClient.println("<td>" + qualif.description + "</td></tr>");
 		
