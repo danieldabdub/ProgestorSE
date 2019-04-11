@@ -7,18 +7,8 @@
     </servlet>
 
     <servlet>
-        <servlet-name>ClientEdit</servlet-name>
-        <servlet-class>ClientEdit</servlet-class>
-    </servlet>
-	
-	<servlet>
         <servlet-name>ClientList</servlet-name>
         <servlet-class>ClientList</servlet-class>
-    </servlet>
-	
-	<servlet>
-        <servlet-name>ClientUpdate</servlet-name>
-        <servlet-class>ClientUpdate</servlet-class>
     </servlet>
 
     <servlet>
@@ -98,18 +88,8 @@
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>ClientEdit</servlet-name>
-        <url-pattern>/ClientEdit</url-pattern>
-    </servlet-mapping>
-	
-	<servlet-mapping>
         <servlet-name>ClientList</servlet-name>
         <url-pattern>/ClientList</url-pattern>
-    </servlet-mapping>
-	
-	<servlet-mapping>
-        <servlet-name>ClientUpdate</servlet-name>
-        <url-pattern>/ClientUpdate</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>

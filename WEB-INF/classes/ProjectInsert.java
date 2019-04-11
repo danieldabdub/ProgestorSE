@@ -3,10 +3,10 @@ import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.sql.Connection;
-import java.sql.Date; 
+import java.sql.Date;
 
 @SuppressWarnings("serial")
-public class ProjectUpdate extends HttpServlet {
+public class ProjectInsert extends HttpServlet {
     Connection connection;
 
     public void init(ServletConfig config) throws ServletException {
@@ -16,11 +16,11 @@ public class ProjectUpdate extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException  {
         res.setContentType("text/html");
-        String idStr = req.getParameter("projectId");
+ 
 
 		
         ProjectData project = new ProjectData(
-		//ahora recoger la info de la pantalla segun el name="__" asignado dentro de cada input
+		//ahora recogerĂ© la info de la pantalla segun el name="__" asignado dentro de cada input
                     req.getParameter("projectId"),
                     req.getParameter("client"),
 					req.getParameter("first"),
@@ -32,6 +32,6 @@ public class ProjectUpdate extends HttpServlet {
                 );
 				
         int n = ProjectData.updateProject(connection, project);
-        res.sendRedirect("ProjectView?id=" + idStr + "&a=" + Math.random());
+        res.sendRedirect("ProjectList");
     }
 }
