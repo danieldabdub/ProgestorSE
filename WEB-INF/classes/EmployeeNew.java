@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.Date; 
 
 @SuppressWarnings("serial")
-public class ProjectNew extends HttpServlet {
+public class EmployeeNew extends HttpServlet {
     Connection connection;
 
     public void init(ServletConfig config) throws ServletException {
@@ -18,18 +18,17 @@ public class ProjectNew extends HttpServlet {
         res.setContentType("text/html");
 
 		
-        ProjectData project = new ProjectData(
+        EmployeeData employee = new EmployeeData(
 		//ahora recoger la info de la pantalla segun el name="__" asignado dentro de cada input
-                    req.getParameter("projectId"),
-                    req.getParameter("clientId"),
-					req.getParameter("managerId"),
-					req.getParameter("startDate"),
-					req.getParameter("status"),
-					req.getParameter("dueDate"),
-					req.getParameter("countryName")
+                    req.getParameter("employeeId"),
+                    req.getParameter("firstName"),
+					req.getParameter("lastName"),
+					req.getParameter("hireDate"),
+					req.getParameter("phone"),
+					req.getParameter("mail")
                 );
 				
-        int n = ProjectData.insertProject(connection, project);
-        res.sendRedirect("ProjectList");
+        int n = EmployeeData.insertEmployee(connection, employee);
+        res.sendRedirect("EmployeeList");
     }
 }

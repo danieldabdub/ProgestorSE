@@ -98,7 +98,7 @@ public class ProjectData{
 		this.countryName=countryName;
 		}
 		
-	ProjectData (String projectId, String clientId,String managerId, String startDateStr, String status, String dueDateStr, String countryName){
+	ProjectData (String projectId, String clientId, String managerId, String startDateStr, String status, String dueDateStr, String countryName){
         
         this.projectId = projectId;
 		this.clientId = clientId;
@@ -312,7 +312,7 @@ public class ProjectData{
     }
 	
 	public static int insertProject(Connection connection, ProjectData project){
-        String sql="INSERT INTO Projects VALUES (projectId=?, clientId=?, managerId=?, status = ?, startDate=?, dueDate = ?, countryName=? )";
+        String sql="INSERT INTO Projects VALUES (?, ?, ?, ?, ?, ?, ? )";
         System.out.println("insertProject: " + sql);
         
         int n = 0;
@@ -330,10 +330,6 @@ public class ProjectData{
 		java.util.Date utilDueDate = formatter.parse(project.dueDateStr);
 		java.sql.Date sqlDueDate = new java.sql.Date(utilDueDate.getTime());		
 	
-	
-	
-		
-		
             PreparedStatement stmtInsert= connection.prepareStatement(sql);
             
 			stmtInsert.setString(1,project.projectId);

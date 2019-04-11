@@ -43,9 +43,35 @@ function fillmanagerInfo() {
 	}
 }
 
-function clientSelected() {
+function mSelected() {
     var mSelected = document.getElementById("manager").value; 
     document.getElementById("selectedManager").value=mSelected;
 }
+
+
+function fillcountryInfo() {
+    var country = [];
+    for (i = 0; i <data.length; i++) {
+        country.push(data[i].countryName);
+    }
+
+	var x = document.getElementById("countryName");
+	//var option = document.createElement("option");
+  
+	for (i=0; i<data.length; i++) {
+	var option = document.createElement("option");
+      option.text = country[i];
+      option.value= country[i];
+      x.add(option);
+	}
+}
+
+function cSelected() {
+    var cSelected = document.getElementById("countryName").value; 
+    document.getElementById("selectedCountry").value=cSelected;
+}
+
+
 fillclientInfo();
 fillmanagerInfo();
+fillcountryInfo();

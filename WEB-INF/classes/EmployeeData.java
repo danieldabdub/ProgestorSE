@@ -272,7 +272,49 @@ public class EmployeeData{
         return vec;
     }	
 	
+	public static int insertEmployee(Connection connection, EmployeeData employee){
+        String sql="INSERT INTO Employees VALUES (?, ?, ?, ?, ?, ?, ? )";
+        System.out.println("insertEmployee: " + sql);
+        
+        int n = 0;
+		
+
+		
+        try {
+			
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		
+		java.util.Date utilhireDate = formatter.parse(employee.strHireDate);
+		java.sql.Date sqlhireDate = new java.sql.Date(utilhireDate.getTime());
 	
+	
+            PreparedStatement stmtInsert= connection.prepareStatement(sql);
+            
+			stmtInsert.setString(1,employee.employeeId);
+			stmtInsert.setString(2,employee.firstName);
+			stmtInsert.setString(3,employee.lastName);
+			stmtInsert.setDate(5, sqlhireDate);
+			stmtInsert.setString(6,employee.phone);
+			stmtInsert.setString(7,employee.mail);
+			
+				
+            n = stmtInsert.executeUpdate();
+            stmtInsert.close();
+			
+			
+        } catch(SQLException e){
+            e.printStackTrace();
+			
+            System.out.println("Error in insertEmployee: " + sql + " Exception: " + e);
+        } catch(ParseException pe){
+            pe.printStackTrace();
+            System.out.println("Error in insertEmployee: " + sql + " Exception: " + pe);   			
+        }
+        return n;
+		
+
+    }
         
 }
 

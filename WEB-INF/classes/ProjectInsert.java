@@ -36,8 +36,8 @@ public class ProjectInsert extends HttpServlet {
 		
 		
 		toClient.println("<tr><td>Manager</td>");
-        toClient.println("<td><select id='manager' ></select></td>");
-		toClient.println("<input type='hidden' id='selectedManager' name='selectedManagerId'>");		
+        toClient.println("<td><select id='manager' name='managerId' ></select></td>");
+		toClient.println("<input type='hidden' id='selectedManager' name='managerId'>");		
 		
         toClient.println("<tr><td>Start Date</td>");
         toClient.println("<td><input type='date' name='startDate'></td>");
@@ -52,7 +52,8 @@ public class ProjectInsert extends HttpServlet {
         toClient.println("</tr>");
 		
 		toClient.println("<tr><td>Country</td>");
-        toClient.println("<td><input name='countryName'></td>");
+        toClient.println("<td><select id='countryName' name='countryName'></td>");
+		toClient.println("<input type='hidden' id='selectedCountry' name='countryName'>");
         toClient.println("</tr>");
 
         toClient.println("</table>");
@@ -61,8 +62,7 @@ public class ProjectInsert extends HttpServlet {
 		toClient.println("</div>");
         toClient.println("</form>");
 		
-        //toClient.println(Utils.footer());
-        //toClient.close();
+ 
 	
 	    toClient.print("<script>clientName=[");
         Vector<ClientData> clientsList = ClientData.getClientList(connection);
@@ -82,7 +82,7 @@ public class ProjectInsert extends HttpServlet {
         toClient.println("<script src=AddInfo.js></script>");
 		
 		
-		 toClient.print("<script>managerName=[");
+		toClient.print("<script>managerName=[");
         Vector<ManagerData> managerList = ManagerData.getManagerList(connection);
         for(int i=0; i< managerList.size(); i++){
                 ManagerData manager = managerList.elementAt(i);
@@ -91,12 +91,32 @@ public class ProjectInsert extends HttpServlet {
                     }
                 toClient.print("{");
                 toClient.print("\"managerId\":\"" + manager.managerId + "\"");
-                toClient.print(",\"managerName\":\"" + manager.first + manager.last+ "\"");
+                toClient.print(",\"managerName\":\"" + manager.first + manager.last + "\"");
                 toClient.print("}");
         }
         toClient.println("]</script>");
-        
         toClient.println("<script src=AddInfo.js></script>");
+		
+		
+		
+		toClient.print("<script>data=[");
+        Vector<CountryData> countryList = CountryData.getCountryList(connection);
+        for(int i=0; i< countryList.size(); i++){
+                CountryData country = countryList.elementAt(i);
+                if (i!=0) {
+                    toClient.print(",");
+                    }
+                toClient.print("{");
+                toClient.print("\"countryName\":\"" + country.countryName+ "\"");
+				toClient.print(",\"processing\":\"" + country.processingTime +"\"");
+				toClient.print(",\"validity\":\"" + country.validityTime+ "\"");
+				
+                toClient.print("}");
+        }
+        toClient.println("]</script>");
+        toClient.println("<script src=AddInfo.js></script>");
+		
+		
 		toClient.println(Utils.footer());
 		toClient.close();
 	}

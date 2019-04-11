@@ -42,7 +42,7 @@ public class EmployeeList extends HttpServlet {
 		toClient.println("</tbody>");
 		toClient.println("</tr>");
         toClient.println("</table>");
-		toClient.println("<form method='get' action='NewClient.html'>"); /*a donde se dirige*/
+		toClient.println("<form method='get' action='EmployeeInsert'>"); /*a donde se dirige*/
 		toClient.println("<div style='text-align: right;'>");
 		toClient.println("<button class='button button1'  type='submit'>Create Client</button>");
 		toClient.println("</div>");
