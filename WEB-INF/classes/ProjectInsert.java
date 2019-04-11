@@ -99,7 +99,7 @@ public class ProjectInsert extends HttpServlet {
 		
 		
 		
-		toClient.print("<script>country=[");
+		toClient.print("<script>data=[");
         Vector<CountryData> countryList = CountryData.getCountryList(connection);
         for(int i=0; i< countryList.size(); i++){
                 CountryData country = countryList.elementAt(i);

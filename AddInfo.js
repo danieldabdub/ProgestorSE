@@ -51,14 +51,14 @@ function mSelected() {
 
 function fillcountryInfo() {
     var country = [];
-    for (i = 0; i <country.length; i++) {
-        country.push(country[i].countryName);
+    for (i = 0; i <data.length; i++) {
+        country.push(data[i].countryName);
     }
 
 	var x = document.getElementById("countryName");
 	//var option = document.createElement("option");
   
-	for (i=0; i<country.length; i++) {
+	for (i=0; i<data.length; i++) {
 	var option = document.createElement("option");
       option.text = country[i];
       option.value= country[i];
