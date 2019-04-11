@@ -26,6 +26,6 @@ public class QualificationUpdate extends HttpServlet {
                 );
 				
         int n = QualificationData.updateQualification(connection, qualification);
-        res.sendRedirect("QualificationView?id=" + idStr + "&a=" + Math.random());
+        res.sendRedirect("QualificationView?id=" + idStr);
     }
 }
