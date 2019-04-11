@@ -29,7 +29,7 @@ public class EmployeeList extends HttpServlet {
         for(int i=0; i< EmployeeList.size(); i++){
                 EmployeeData employee =EmployeeList.elementAt(i);
                 toClient.println("<tr>");
-				toClient.println("<td><a href='EmployeeView?id=" + employee.employeeId + "'>"+ employee.employeeId +"</a></td>");
+				toClient.println("<td><a href='EmployeeView?employeeId=" + employee.employeeId + "'>"+ employee.employeeId +"</a></td>");
                 toClient.println("<td>" + employee.firstName + " </td>");
 				toClient.println("<td>" + employee.lastName + " </td>");
                 toClient.println("</tr>");
