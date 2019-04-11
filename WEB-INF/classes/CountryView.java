@@ -26,20 +26,40 @@ public class CountryView extends HttpServlet  {
 		
 		toClient.println(Utils.header("Employees Availiable for  " + country.countryName));
    
+         
+        //tabla 1
+         
+        toClient.println("<table class='Table1'>");
+		toClient.println("<thead>");
+		toClient.println("<tr>");
+		toClient.println("<th>Country Name</th>");
+		toClient.println("<th>Processing Time</th>");
+        toClient.println("<th>Validity Time</th>");
+        toClient.println("<tr>");
+        toClient.println("<td><a href='CountryView?id=" + country.countryName + "'>"+ country.countryName +"</a></td>");
+        toClient.println("<td>" + country.processingTime + " </td>");
+        toClient.println("<td>" + country.validityTime + " </td>");
+        toClient.println("</tr>");
+
+        toClient.println("<br>");
+        toClient.println("<br>");
+         
 		
-		//tabla
+		//tabla 2
 		
-        toClient.println("<table class= 'Table1' id='countryName' >");
+        toClient.println("<table class= 'Table2' id='countryName' >");
   
-		toClient.println("<table class='Table1'>");
+		toClient.println("<table class='Table2'>");
 		toClient.println("<thead>");
 		toClient.println("<tr>");
 		toClient.println("<th>Employee ID</th>");
 		toClient.println("<th>First Name </th>");
 		toClient.println("<th>Last Name </th>");
+        toClient.println("</tbody>");
+        toClient.println("</table>");
 		
         Vector<EmployeeData> EmployeeList;
-        EmployeeList= EmployeeData.getEmployeeList(connection);
+        EmployeeList= EmployeeData.getCountryEmployeeList(connection, country.countryName);
         for(int i=0; i< EmployeeList.size(); i++){
                 EmployeeData employee =EmployeeList.elementAt(i);
                 toClient.println("<tr>");
@@ -51,19 +71,21 @@ public class CountryView extends HttpServlet  {
 
         }
 		
-		//boton
-		toClient.println( "<form method='get' action='QualificationEdit'> ");
-			toClient.println("<input type= 'hidden' name= 'id' value = " + qualification.qualificationId + ">");
-			toClient.println("<div style='text-align: right; '>" );
-				toClient.println("<button  class='button button1' type='submit'>Edit Qualification's information</button>");
-			toClient.println("</div>" );
+		toClient.println("</tbody>");
+        toClient.println("</table>");
+         
+         
+        //boton
+         
+        toClient.println( "<form method='get' action='CountryEdit'> ");
+        toClient.println("<div style='text-align: right; '>" );
+        toClient.println("<button  class='button button1' type='submit'>Edit Country's information</button>");
+        toClient.println("</div>" );
 		toClient.println("</form>" );
-
- 
-		toClient.println(Utils.footer());
-			
-        
-
+         
+        toClient.println(Utils.footer());
+		toClient.println("</body>");
+        toClient.close();
         
     }
 }
