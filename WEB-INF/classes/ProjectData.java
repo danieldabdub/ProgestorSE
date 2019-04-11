@@ -297,5 +297,69 @@ public class ProjectData{
 		
 
     }
+	
+	public static int insertProject(Connection connection, ProjectData project){
+        String sql="INSERT INTO Projects VALUES (projectId=?, clientId=?, first=?, last=?, status = ?, startDate=?, dueDate = ? )";
+        System.out.println("insertProject: " + sql);
+        
+        int n = 0;
+		
+
+		
+        try {
+			
+		//SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		
+		java.util.Date utilStartDate = formatter.parse(project.startDateStr);
+		java.sql.Date sqlStartDate = new java.sql.Date(utilStartDate.getTime());
+
+		java.util.Date utilDueDate = formatter.parse(project.dueDateStr);
+		java.sql.Date sqlDueDate = new java.sql.Date(utilDueDate.getTime());		
+	
+	
+		
+		//java.sql.Date sDate = DatesConversion.convertUtilToSql(startDateUp);
+		//java.sql.Date dDate = DatesConversion.convertUtilToSql(dueDateUp);
+		
+		//java.sql.Date	sqlstarDate = new java.sql.Date(startDateUp);	
+		
+		
+            PreparedStatement stmtUpdate= connection.prepareStatement(sql);
+            
+			stmtUpdate.setString(1,project.projectId);
+			stmtUpdate.setString(2,project.clientId);
+			stmtUpdate.setString(3,project.first);	
+			stmtUpdate.setString(4,project.last);
+			stmtUpdate.setString(5,project.status);
+			stmtUpdate.setDate(6, sqlStartDate);
+			stmtUpdate.setDate(7,sqlDueDate);
+			
+			
+			
+          /*  stmtUpdate.setString(2,project.first);
+           stmtUpdate.setString(3,project.last);
+		   stmtUpdate.setDate(4, sqlStartDate);
+           stmtUpdate.setString(5,project.status);
+		   stmtUpdate.setDate(6,sqlDueDate);
+		   stmtUpdate.setString(7,project.countryName);
+		   stmtUpdate.setString(8,project.projectId); */
+				
+            n = stmtUpdate.executeUpdate();
+            stmtUpdate.close();
+			
+			
+        } catch(SQLException e){
+            e.printStackTrace();
+			
+            System.out.println("Error in insertProject: " + sql + " Exception: " + e);
+        } catch(ParseException pe){
+            pe.printStackTrace();
+            System.out.println("Error in insertProject: " + sql + " Exception: " + pe);   			
+        }
+        return n;
+		
+
+    }
         
 }

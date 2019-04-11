@@ -50,7 +50,7 @@ public class ProjectList extends HttpServlet {
 		toClient.println("</tbody>");
 		toClient.println("</tr>");
         toClient.println("</table>");
-		toClient.println("<form method='get' action='CreateProject'>");
+		toClient.println("<form method='get' action='ProjectInsert'>");
 		toClient.println("<div style='text-align: right;'>");
 		toClient.println("<button class='button button1'  type='submit'>Create Project</button>");
 		toClient.println("</div>");
