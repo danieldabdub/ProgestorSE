@@ -22,6 +22,7 @@ public class ClientList extends HttpServlet {
 		toClient.println("<tr>");
 		toClient.println("<th>Client ID</th>");
 		toClient.println("<th>Company Name</th>");
+		toClient.println("</thead>");
 		
 		
         Vector<ClientData> ClientList;
