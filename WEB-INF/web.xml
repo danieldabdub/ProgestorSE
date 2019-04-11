@@ -72,6 +72,16 @@
     </servlet>
 	
 	<servlet>
+        <servlet-name>QualificationEdit</servlet-name>
+        <servlet-class>QualificationEdit</servlet-class>
+    </servlet>
+
+	<servlet>
+        <servlet-name>QualificationUpdate</servlet-name>
+        <servlet-class>QualificationUpdate</servlet-class>
+    </servlet>	
+	
+	<servlet>
         <servlet-name>EmployeeView</servlet-name>
         <servlet-class>EmployeeView</servlet-class>
     </servlet>
@@ -151,6 +161,16 @@
         <servlet-name>QualificationView</servlet-name>
         <url-pattern>/QualificationView</url-pattern>
     </servlet-mapping>
+	
+	<servlet-mapping>
+        <servlet-name>QualificationEdit</servlet-name>
+        <url-pattern>/QualificationEdit</url-pattern>
+    </servlet-mapping>	
+	
+	<servlet-mapping>
+        <servlet-name>QualificationUpdate</servlet-name>
+        <url-pattern>/QualificationUpdate</url-pattern>
+    </servlet-mapping>	
 	
 	<servlet-mapping>
         <servlet-name>ClientView</servlet-name>

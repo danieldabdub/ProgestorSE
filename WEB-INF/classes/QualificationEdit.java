@@ -31,10 +31,10 @@ public class QualificationEdit extends HttpServlet {
 		
         toClient.println("<table class='Table1'>");
         toClient.println("<tr><td>QualificationId</td>");
-        toClient.println("<td><input disabled='disabled' name='qualificationId'  value='" + qualif.qualificationId + "'></td></tr>");
+        toClient.println("<td><input  name='qualificationId'  value='" + qualif.qualificationId + "'></td></tr>");
         
 		toClient.println("<tr><td>Qualification</td>");
-        toClient.println("<td><input disabled='disabled' name='qualificationName'  value=' " + qualif.qualification + "'></td></tr>");
+        toClient.println("<td><input  name='qualificationName'  value=' " + qualif.qualification + "'></td></tr>");
 
 		toClient.println("<tr><td>Description</td>");
         toClient.println("<td><input name='description' value='" + qualif.description + "'></td>");		
