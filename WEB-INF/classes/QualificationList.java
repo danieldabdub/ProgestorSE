@@ -22,6 +22,7 @@ public class QualificationList extends HttpServlet {
 		toClient.println("<tr>");
 		toClient.println("<th>Qualification</th>");
 		toClient.println("<th>Description</th>");
+		toClient.println("</thead>");
 		
 		
         Vector<QualificationData> QualificationList;
@@ -36,7 +37,6 @@ public class QualificationList extends HttpServlet {
 
         }
 		
-		toClient.println(Utils.footer());
 		toClient.println("</tbody>");
 		toClient.println("</tr>");
         toClient.println("</table>");
@@ -45,6 +45,7 @@ public class QualificationList extends HttpServlet {
 		toClient.println("<button class='button button1'  type='submit'>Create Qualification</button>");
 		toClient.println("</div>");
 		toClient.println("</form>");
+		toClient.println(Utils.footer());
 		toClient.println("</body>");
         toClient.close();
     }

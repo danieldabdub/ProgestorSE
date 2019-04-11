@@ -86,9 +86,7 @@ public class QualificationData{
     
     public static int updateQualification(Connection connection, QualificationData qualification){
 
-        String sql="UPDATE Qualifications";
-        sql += "SET description=?";
-        sql += "WHERE qualificationId=?";
+        String sql="UPDATE Qualifications SET description = ? WHERE qualificationId = ?";
         
         System.out.println("updateQualification: " + sql);
         
