@@ -30,7 +30,6 @@ public class ClientView extends HttpServlet {
     
     public static void clientBasic(PrintWriter toClient, Connection connection, String clientId) {
         ClientData client = ClientData.getClient(connection, clientId);  
-        //toClient.println("<h1 align='center'> Client " + clientId + "</h1>");
         toClient.println("<table class='Table1'>");   
         toClient.println("<thead>");
         toClient.println("<tr>");
@@ -40,6 +39,7 @@ public class ClientView extends HttpServlet {
         toClient.println("<th>Phone</th>");
         toClient.println("<th>Mail</th>");
         toClient.println("</tr>");
+        toClient.println("</thead>");
         toClient.println("<tbody>");
         toClient.println("<tr>");
         toClient.println("<td>" + client.companyName + "</td>");
