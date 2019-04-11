@@ -31,7 +31,7 @@ public class CheckLogin extends HttpServlet {
             res.sendRedirect("Menu?managerId=" + login);
         } else {
             PrintWriter toClient = res.getWriter();
-            toClient.println(Utils.header());
+            toClient.println(Utils.header(""));
             if (login != null) {
               toClient.println("<h1>Login incorrect</h1>");
             }

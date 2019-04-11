@@ -3,7 +3,7 @@ import java.util.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.sql.Connection;
-import java.sql.Date;
+import java.sql.Date; 
 
 @SuppressWarnings("serial")
 public class ProjectUpdate extends HttpServlet {
@@ -20,7 +20,7 @@ public class ProjectUpdate extends HttpServlet {
 
 		
         ProjectData project = new ProjectData(
-		//ahora recogeré la info de la pantalla segun el name="__" asignado dentro de cada input
+		//ahora recoger la info de la pantalla segun el name="__" asignado dentro de cada input
                     req.getParameter("projectId"),
                     req.getParameter("client"),
 					req.getParameter("first"),

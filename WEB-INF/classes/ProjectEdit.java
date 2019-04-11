@@ -21,7 +21,6 @@ public class ProjectEdit extends HttpServlet {
         res.setContentType("text/html");
         PrintWriter toClient = res.getWriter();
 
-        toClient.println("<form action='ProjectUpdate' method='GET'>");		
 		//desde ProjectView, al darle al boton paso un hidden value llamado "id".
         String idStr = req.getParameter("id");
 		
@@ -34,10 +33,10 @@ public class ProjectEdit extends HttpServlet {
 		
         toClient.println("<table class='Table1'>");
         toClient.println("<tr><td>ProjectId</td>");
-        toClient.println("<td><input name='projectId' value='" + project.projectId + "'></td></tr>");
+        toClient.println("<td><input name='projectId'  value='" + project.projectId + "'></td></tr>");
         
 		toClient.println("<tr><td>Client</td>");
-        toClient.println("<td><input name='companyName' value='" + project.companyName + "'></td></tr>");
+        toClient.println("<td><input name='companyName'  value=' " + project.companyName + "'></td></tr>");
 
 		toClient.println("<tr><td>Manager</td>");
         toClient.println("<td><input name='first' value='" + project.first + "'></td>");		
@@ -46,7 +45,7 @@ public class ProjectEdit extends HttpServlet {
         toClient.println("<td><input name='last' value='" + project.last + "'></td>");
 		
         toClient.println("<tr><td>Start Date</td>");
-        toClient.println("<td><input name='startDate' value='" + project.startDate + "'></td>");
+        toClient.println("<td><input name='startDate' type='date'  value='" + project.startDate + "'></td>");
         toClient.println("</tr>");
 		
 		toClient.println("<tr><td>Status</td>");
@@ -54,7 +53,7 @@ public class ProjectEdit extends HttpServlet {
         toClient.println("</tr>");
 		
 		 toClient.println("<tr><td>DueDate</td>");
-        toClient.println("<td><input name='dueDate' value='" + project.dueDate + "'></td>");
+        toClient.println("<td><input name='dueDate' type='date'  value='" + project.dueDate + "'></td>");
         toClient.println("</tr>");
 		
 		toClient.println("<tr><td>Country</td>");

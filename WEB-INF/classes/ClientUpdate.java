@@ -19,19 +19,18 @@ public class ClientUpdate extends HttpServlet {
         String idStr = req.getParameter("clientId");
 
 		
-        ClientData client = new ClientData(
-		//ahora recogeré la info de la pantalla segun el name="__" asignado dentro de cada input
-            
-                    req.getParameter("clientId"),
-                    req.getParameter("companyName"),
-					req.getParameter("countryHq"),
-					req.getParameter("contract"),
-					req.getParameter("startDate"),
-					req.getParameter("phone"),
-					req.getParameter("mail"),
-                );
+        // ClientData client = new ClientData(
+		//ahora recoger la info de la pantalla segun el name="__" asignado dentro de cada input
+                    // req.getParameter("clientId"),
+                    // req.getParameter("companyName"),
+					// req.getParameter("countryHq"),
+					// req.getParameter("contract"),
+					// req.getParameter("startDate"),
+					// req.getParameter("phone"),
+					// req.getParameter("mail")
+                // );
 				
-    int n = ClientData.updateClient(connection, client);
+    // int n = ClientData.updateClient(connection, client);
     res.sendRedirect("ClientView?id=" + idStr + "&a=" + Math.random());
         
     }
