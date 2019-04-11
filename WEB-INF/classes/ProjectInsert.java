@@ -107,7 +107,10 @@ public class ProjectInsert extends HttpServlet {
                     toClient.print(",");
                     }
                 toClient.print("{");
-                toClient.print(",\"countryName\":\"" + country.countryName+"\"");
+                toClient.print("\"countryName\":\"" + country.countryName+ "\"");
+				toClient.print(",\"processing\":\"" + country.processingTime +"\"");
+				toClient.print(",\"validity\":\"" + country.validityTime+ "\"");
+				
                 toClient.print("}");
         }
         toClient.println("]</script>");
