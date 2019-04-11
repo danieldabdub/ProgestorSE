@@ -108,3 +108,43 @@ public class QualificationData{
     }
         
 }
+
+class EmployeeQualificationData {
+    String employeeId;
+    String    qualificationId;
+    String    qualification;
+    Date qualificationDate;
+
+    
+    EmployeeQualificationData (String employeeId, String qualificationId, String qualification, Date qualificationDate) {
+        this.employeeId    = employeeId;
+        this.qualificationId   = qualificationId;
+        this.qualification = qualification;
+        this.qualificationDate = qualificationDate;
+    }
+        
+    public static Vector<EmployeeQualificationData> getEmployeeQualifications(Connection connection, String employeeId) {
+        Vector<EmployeeQualificationData> vec = new Vector<EmployeeQualificationData>();
+        String sql = "Select Qualifications.qualificationId as qualificationId, qualification, qualificationDate FROM Qualifications, EmployeeQualifications";
+        sql += " WHERE Qualifications.qualificationId = EmployeeQualifications.qualificationId AND employeeId = ?";
+        System.out.println("getEmployeeQualifications: " + sql);
+        try {
+            PreparedStatement statement= connection.prepareStatement(sql);
+            statement.setString(1, employeeId);
+            ResultSet result = statement.executeQuery();
+            while(result.next()) {
+                EmployeeQualificationData employeeQualifications = new EmployeeQualificationData(
+                    employeeId,
+                    result.getString("qualificationId"),
+                    result.getString("qualification"),
+                    result.getDate("qualificationDate")
+                );
+                vec.addElement(employeeQualifications);
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error in getEmployeeQualifications: " + sql + " Exception: " + e);
+        }
+        return vec;
+    }
+}
