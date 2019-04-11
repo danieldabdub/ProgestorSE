@@ -21,11 +21,11 @@ public class ClientEdit extends HttpServlet {
 
         toClient.println("<form action='ClientUpdate' method='GET'>");
         
-        String idStr = req.getParameter("id");
+        String idStr = req.getParameter("clientId");
 
         ClientData client = ClientData.getClient(connection, idStr);
 		
-		toClient.println(Utils.header("Edit Client " + client.clientId));
+		toClient.println(Utils.header("Edit " + client.companyName));
 		
         toClient.println("<form action='ClientUpdate' method='GET'>");
 		

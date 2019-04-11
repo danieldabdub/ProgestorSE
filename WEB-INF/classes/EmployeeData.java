@@ -39,11 +39,13 @@ public class EmployeeData{
         this.mail = mail;
     }    
     
+	//Constructo para getProjectEmployeeList, getQualifiedEmployes
     EmployeeData(String employeeId, String firstName, String lastName) {
         this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;
     }
+	
     
     public static Vector<EmployeeData> getEmployeeList(Connection connection){
         
@@ -144,7 +146,7 @@ public class EmployeeData{
     }
     
     public static int updateEmployee(Connection connection, EmployeeData employee){
-        //ESCRIBIR SQL!!!!
+       
         String sql="UPDATE Employees";
         sql += "SET firstName=?, lastName=?, hireDate=?, phone=?, mail=?";
         sql += "WHERE employeeId=?";
@@ -182,7 +184,6 @@ public class EmployeeData{
         
         Vector<EmployeeData> vec = new Vector<EmployeeData>();
         
-        //ESCRIBIR SQL
         
         String sql = "SELECT EmployeeQualifications.employeeId as employeeId, firstName, lastName FROM EmployeeQualifications, Employees";
         sql += "WHERE Employees.employeeId=EmployeeQualifications.employeeId AND qualificationId=?";
@@ -239,6 +240,39 @@ public class EmployeeData{
         return n;
         
     }
+	
+    public static Vector<EmployeeData> getCountryEmployeeList(Connection connection, String countryName){
+        
+        Vector<EmployeeData> vec = new Vector<EmployeeData>();
+        
+        
+        String sql = "SELECT EmployeeCountry.employeeId as employeeId, firstName, lastName FROM EmployeeCountry, Employees ";
+        sql += "WHERE EmployeeCountry.employeeId=Employees.employeeId AND countryName=?";
+        System.out.println("getProjectEmployeeList: " + sql);
+        
+        try {
+            PreparedStatement pstmt=connection.prepareStatement(sql);
+            pstmt.setString(1, countryName);
+            
+            ResultSet result = pstmt.executeQuery();
+            
+            while(result.next()) {
+                
+                EmployeeData employee = new EmployeeData(
+                    result.getString("employeeId"),
+                    result.getString("firstName"),
+                    result.getString("lastName")
+                );
+                vec.addElement(employee);
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error in getProjectEmployeeList: " + sql + " Exception: " + e);
+        }
+        return vec;
+    }	
+	
+	
         
 }
 

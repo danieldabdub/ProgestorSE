@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.Date;
 
 @SuppressWarnings("serial")
-public class ClientUpdate extends HttpServlet {
+public class CountryUpdate extends HttpServlet {
     Connection connection;
 
     public void init(ServletConfig config) throws ServletException {
@@ -16,20 +16,20 @@ public class ClientUpdate extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException  {
         res.setContentType("text/html");
-        String idStr = req.getParameter("clientId");
+        
+        // No estoy tan seguro de que sea con el ID asi
+        
+        String idStr = req.getParameter("countryName");
 
 		
-        ClientData client = new ClientData(
-                    req.getParameter("clientId"),
-                    req.getParameter("companyName"),
-					req.getParameter("countryHq"),
-					req.getParameter("contact"),
-					req.getParameter("phone"),
-					req.getParameter("mail")
+        CountryData country = new CountryData(
+                    req.getParameter("countryName"),
+                    Integer.parseInt(req.getParameter("processingTime")),
+					Integer.parseInt(req.getParameter("validityTime"))
                 );
 				
-    int n = ClientData.updateClient(connection, client);
-    res.sendRedirect("ClientView?id=" + idStr);
+        int n = CountryData.updateCountry(connection, country);
         
+        res.sendRedirect("CountryView?id=" + idStr);
     }
 }
