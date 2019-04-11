@@ -37,7 +37,6 @@ public class ClientList extends HttpServlet {
 
         }
 		
-		toClient.println(Utils.footer());
 		toClient.println("</tbody>");
 		toClient.println("</tr>");
         toClient.println("</table>");
@@ -47,6 +46,7 @@ public class ClientList extends HttpServlet {
 		toClient.println("</div>");
 		toClient.println("</form>");
 		toClient.println("</body>");
+		toClient.println(Utils.footer());
         toClient.close();
     }
 }
