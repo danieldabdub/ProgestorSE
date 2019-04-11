@@ -21,9 +21,8 @@ public class ProjectNew extends HttpServlet {
         ProjectData project = new ProjectData(
 		//ahora recoger la info de la pantalla segun el name="__" asignado dentro de cada input
                     req.getParameter("projectId"),
-                    req.getParameter("client"),
-					req.getParameter("first"),
-					req.getParameter("last"),
+                    req.getParameter("clientId"),
+					req.getParameter("managerId"),
 					req.getParameter("startDate"),
 					req.getParameter("status"),
 					req.getParameter("dueDate"),
@@ -31,6 +30,6 @@ public class ProjectNew extends HttpServlet {
                 );
 				
         int n = ProjectData.insertProject(connection, project);
-        res.sendRedirect("ProjectView?id=" + project.projectId + "&a=" + Math.random());
+        res.sendRedirect("ProjectList");
     }
 }

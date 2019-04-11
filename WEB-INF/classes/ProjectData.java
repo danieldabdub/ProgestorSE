@@ -27,6 +27,8 @@ public class ProjectData{
     String countryName;
     int startMonth;
     int dueMonth;
+	String clientId;
+	String managerId;
     
     
     // Primer Constructor: - getProjectList
@@ -90,6 +92,17 @@ public class ProjectData{
 		this.companyName = companyName;
 		this.first=first;
 		this.last=last;
+        this.startDateStr = startDateStr;
+		this.status=status;
+        this.dueDateStr = dueDateStr;
+		this.countryName=countryName;
+		}
+		
+	ProjectData (String projectId, String clientId,String managerId, String startDateStr, String status, String dueDateStr, String countryName){
+        
+        this.projectId = projectId;
+		this.clientId = clientId;
+		this.managerId=managerId;
         this.startDateStr = startDateStr;
 		this.status=status;
         this.dueDateStr = dueDateStr;
@@ -299,7 +312,7 @@ public class ProjectData{
     }
 	
 	public static int insertProject(Connection connection, ProjectData project){
-        String sql="INSERT INTO Projects VALUES (projectId=?, clientId=?, first=?, last=?, status = ?, startDate=?, dueDate = ? )";
+        String sql="INSERT INTO Projects VALUES (projectId=?, clientId=?, managerId=?, status = ?, startDate=?, dueDate = ?, countryName=? )";
         System.out.println("insertProject: " + sql);
         
         int n = 0;
@@ -325,15 +338,15 @@ public class ProjectData{
 		//java.sql.Date	sqlstarDate = new java.sql.Date(startDateUp);	
 		
 		
-            PreparedStatement stmtUpdate= connection.prepareStatement(sql);
+            PreparedStatement stmtInsert= connection.prepareStatement(sql);
             
-			stmtUpdate.setString(1,project.projectId);
-			stmtUpdate.setString(2,project.clientId);
-			stmtUpdate.setString(3,project.first);	
-			stmtUpdate.setString(4,project.last);
-			stmtUpdate.setString(5,project.status);
-			stmtUpdate.setDate(6, sqlStartDate);
-			stmtUpdate.setDate(7,sqlDueDate);
+			stmtInsert.setString(1,project.projectId);
+			stmtInsert.setString(2,project.clientId);
+			stmtInsert.setString(3,project.managerId);
+			stmtInsert.setString(4,project.status);
+			stmtInsert.setDate(5, sqlStartDate);
+			stmtInsert.setDate(6,sqlDueDate);
+			stmtInsert.setString(7,project.countryName);
 			
 			
 			
@@ -345,8 +358,8 @@ public class ProjectData{
 		   stmtUpdate.setString(7,project.countryName);
 		   stmtUpdate.setString(8,project.projectId); */
 				
-            n = stmtUpdate.executeUpdate();
-            stmtUpdate.close();
+            n = stmtInsert.executeUpdate();
+            stmtInsert.close();
 			
 			
         } catch(SQLException e){

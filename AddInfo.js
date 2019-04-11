@@ -1,4 +1,5 @@
-fillclientInfo();
+
+console.log("Entra 1");
 function fillclientInfo() {
     var clientId = [];
     var companyName = [];
@@ -6,7 +7,7 @@ function fillclientInfo() {
         clientId.push(clientName[i].clientId);
         companyName.push(clientName[i].companyName);
     }
-
+	console.log("Entra 1");
 	var x = document.getElementById("companyName");
 	//var option = document.createElement("option");
   
@@ -23,11 +24,6 @@ function clientSelected() {
     document.getElementById("selectedClient").value=cSelected;
 }
 
-
-
-
-
-fillmanagerInfo();
 function fillmanagerInfo() {
     var managerId = [];
     var manager = [];
@@ -51,3 +47,5 @@ function clientSelected() {
     var mSelected = document.getElementById("manager").value; 
     document.getElementById("selectedManager").value=mSelected;
 }
+fillclientInfo();
+fillmanagerInfo();
