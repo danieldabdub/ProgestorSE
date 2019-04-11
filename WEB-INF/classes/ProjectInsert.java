@@ -27,8 +27,8 @@ public class ProjectInsert extends HttpServlet {
         toClient.println("<form action='ProjectNew' method='GET'>");
 		
         toClient.println("<table id='newProjectTable' class='Table1'>");
-        toClient.println("<tr><td>ProjectId name='projectId'</td>");
-        toClient.println("<td><input></input></td></tr>");
+        toClient.println("<tr><td>ProjectId </td>");
+        toClient.println("<td><input name='projectId'></input></td></tr>");
         
 		toClient.println("<tr><td>Client</td>");
         toClient.println("<td><select id='companyName' name='clientId'></select></td></tr>");
@@ -57,7 +57,7 @@ public class ProjectInsert extends HttpServlet {
 
         toClient.println("</table>");
 		toClient.println("<div style='text-align: right;'>");
-		toClient.println("<button class='button button1'  type='submit'>Submit</button>");
+		toClient.println("<button class='button button1' type='submit'>Save</button>");
 		toClient.println("</div>");
         toClient.println("</form>");
 		

@@ -321,7 +321,7 @@ public class ProjectData{
 		
         try {
 			
-		//SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
+		
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		
 		java.util.Date utilStartDate = formatter.parse(project.startDateStr);
@@ -331,11 +331,7 @@ public class ProjectData{
 		java.sql.Date sqlDueDate = new java.sql.Date(utilDueDate.getTime());		
 	
 	
-		
-		//java.sql.Date sDate = DatesConversion.convertUtilToSql(startDateUp);
-		//java.sql.Date dDate = DatesConversion.convertUtilToSql(dueDateUp);
-		
-		//java.sql.Date	sqlstarDate = new java.sql.Date(startDateUp);	
+	
 		
 		
             PreparedStatement stmtInsert= connection.prepareStatement(sql);
@@ -348,15 +344,6 @@ public class ProjectData{
 			stmtInsert.setDate(6,sqlDueDate);
 			stmtInsert.setString(7,project.countryName);
 			
-			
-			
-          /*  stmtUpdate.setString(2,project.first);
-           stmtUpdate.setString(3,project.last);
-		   stmtUpdate.setDate(4, sqlStartDate);
-           stmtUpdate.setString(5,project.status);
-		   stmtUpdate.setDate(6,sqlDueDate);
-		   stmtUpdate.setString(7,project.countryName);
-		   stmtUpdate.setString(8,project.projectId); */
 				
             n = stmtInsert.executeUpdate();
             stmtInsert.close();
