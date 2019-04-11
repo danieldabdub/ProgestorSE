@@ -299,3 +299,84 @@ public class ProjectData{
     }
         
 }
+
+class EmployeeProjectData {
+    String employeeId;
+    String    projectId;
+    String    countryName;
+    String status;
+
+    
+    EmployeeProjectData (String employeeId, String projectId, String countryName, String status) {
+        this.employeeId    = employeeId;
+        this.projectId   = projectId;
+        this.countryName = countryName;
+        this.status = status;
+    }
+        
+    public static Vector<EmployeeProjectData> getEmployeeProjects(Connection connection, String employeeId) {
+        Vector<EmployeeProjectData> vec = new Vector<EmployeeProjectData>();
+        String sql = "SELECT ProjectEmployee.projectId as projectId, ProjectEmployee.countryName as countryName, status FROM ProjectEmployee, Projects";
+        sql += " WHERE ProjectEmployee.projectId = Projects.projectId AND employeeId = ?";
+        System.out.println("getEmployeeProjects: " + sql);
+        try {
+            PreparedStatement statement= connection.prepareStatement(sql);
+            statement.setString(1, employeeId);
+            ResultSet result = statement.executeQuery();
+            while(result.next()) {
+                EmployeeProjectData employeeProjects = new EmployeeProjectData(
+                    employeeId,
+                    result.getString("projectId"),
+                    result.getString("countryName"),
+                    result.getString("status")
+                );
+                vec.addElement(employeeProjects);
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error in getEmployeeProjects: " + sql + " Exception: " + e);
+        }
+        return vec;
+    }    
+}
+
+class ClientProjectData {
+    String clientId;
+    String projectId;
+    String countryName;
+    String status;
+    
+        ClientProjectData (String clientiD, String projectId, String countryName, String status) {
+        this.clientId    = clientId;
+        this.projectId   = projectId;
+        this.countryName = countryName;
+        this.status = status;
+    }
+        
+    public static Vector<ClientProjectData> getClientProjects(Connection connection, String clientId) {
+        Vector<ClientProjectData> vec = new Vector<ClientProjectData>();
+        String sql = "SELECT projectId, countryName, status FROM Projects";
+        sql += " WHERE clientId = ?";
+        System.out.println("getClientProjects: " + sql);
+        try {
+            PreparedStatement statement= connection.prepareStatement(sql);
+            statement.setString(1, clientId);
+            ResultSet result = statement.executeQuery();
+            while(result.next()) {
+                ClientProjectData clientProjects = new ClientProjectData(
+                    clientId,
+                    result.getString("projectId"),
+                    result.getString("countryName"),
+                    result.getString("status")
+                );
+                vec.addElement(clientProjects);
+            }
+        } catch(SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error in getClientProjects: " + sql + " Exception: " + e);
+        }
+        return vec;
+    }   
+    
+
+}
