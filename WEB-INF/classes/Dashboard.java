@@ -62,7 +62,7 @@ public class Dashboard extends HttpServlet {
 
         toClient.println("</div>");
         
-        toClient.println(Utils.footer());
+        toClient.println(Utils.footerD());
         toClient.close();
     }
 }
