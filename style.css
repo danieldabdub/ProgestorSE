@@ -40,7 +40,7 @@ table.Table1 td, table.Table1 th {
   padding: 3px 4px;
 }
 table.Table1 tbody td {
-  font-size: 13px;
+  font-size: 15px;
   color: #333333;
 }
 table.Table1 thead {
@@ -48,7 +48,7 @@ table.Table1 thead {
   border-bottom: 2px solid #962B33;
 }
 table.Table1 thead th {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: bold;
   color: #962B33;
   text-align: center;
@@ -59,7 +59,7 @@ table.Table1 thead th:first-child {
 }
 
 table.Table1 tfoot td {
-  font-size: 14px;
+  font-size: 18px;
 }
 
 /* Dropdown */
@@ -160,6 +160,7 @@ select:focus{ outline: none;}
   overflow: hidden;
   background-color: #962B33;
   position: absolute;
+  
   right: 0;
   left: 0;
   bottom: 0;
@@ -175,9 +176,9 @@ select:focus{ outline: none;}
   right: 0;
   left: 0;
   bottom: 0;
-  width: 100%;
   font-family: "Roboto"; 
   font-weight: 300;
+  width: 100%;
   font-size: 15px;
 }
 

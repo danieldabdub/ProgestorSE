@@ -51,7 +51,18 @@ public class Utils {
     
     public static String footer(){
         StringBuilder str = new StringBuilder();
-        str.append("<div style='text-align: right;' class='navbar'>");
+		str.append("<br>");
+		str.append("<br>");
+		str.append("<br>");
+		str.append("<br>");
+		str.append("<br>");
+		str.append("<br>");
+		str.append("<br>");
+		str.append("<br>");
+		str.append("<br>");
+		str.append("<hr style= 'color:#FFFFFF;' noshade='noshade' width='0%' height: 0px border='0' bordercolor='#FFFFFF'/>");
+        
+		str.append("<div style='text-align: right;' class='navbar'>");
         str.append("<a href='#'><b>About Us</b></a>");
         str.append("<a href='Search.html'>Search</a>");
         str.append("<a href='Notifications'>Notifications</a>");
@@ -60,7 +71,7 @@ public class Utils {
         str.append("<a href='ClientList'>Clients</a>");
         str.append("<a href='EmployeeList'>Employees</a>");
         str.append("<a href='QualificationList'>Qualifications</a>");
-        str.append("<p> <font color='white'>Sancho el sabio nº8 8 Izq. </font></p>");
+        str.append("<p> <font color='white'>Sancho el sabio n8 8 Izq. </font></p>");
         str.append("<p> <font color='white'>654-321-000 </font></p>");
         str.append("<p> <font color='white'>help@progestor.es</font></p>");
         return str.toString();
