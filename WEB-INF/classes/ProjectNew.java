@@ -30,6 +30,6 @@ public class ProjectNew extends HttpServlet {
                 );
 				
         int n = ProjectData.insertProject(connection, project);
-        res.sendRedirect("ProjectList");
+        res.sendRedirect("ProjectView?projectId="+ project.projectId);
     }
 }
