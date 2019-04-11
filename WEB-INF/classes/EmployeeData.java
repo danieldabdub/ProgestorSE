@@ -4,7 +4,10 @@ import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Date;
+// import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class EmployeeData{
     
@@ -13,7 +16,7 @@ public class EmployeeData{
     String firstName;
     String lastName;
     Date hireDate;
-    String hiredDate;
+    String strHireDate;
     String phone;
     String mail;
     
@@ -27,17 +30,14 @@ public class EmployeeData{
         this.mail = mail;
     }
     
-    EmployeeData (String employeeId, String firstName, String lastName, String hiredDate, String phone, String mail){
+    EmployeeData (String employeeId, String firstName, String lastName, String strHireDate, String phone, String mail){
         this.employeeId = employeeId;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.hiredDate = hiredDate;
+        this.strHireDate = strHireDate;
         this.phone = phone;
         this.mail = mail;
     }    
-    
-    // Constructor para: - getProjectEmployeeList
-    //                   - getQualifiedEmployees
     
     EmployeeData(String employeeId, String firstName, String lastName) {
         this.employeeId = employeeId;
@@ -109,37 +109,6 @@ public class EmployeeData{
         return vec;
     }
     
-    public static Vector<EmployeeData> getCountryEmployeeList(Connection connection, String countryName){
-        
-        Vector<EmployeeData> vec = new Vector<EmployeeData>();
-        
-        
-        String sql = "SELECT EmployeeCountry.employeeId as employeeId, firstName, lastName FROM EmployeeCountry, Employees";
-        sql += "WHERE EmployeeCountry.employeeId=Employees.employeeId AND countryName=?";
-        System.out.println("getProjectEmployeeList: " + sql);
-        
-        try {
-            PreparedStatement pstmt=connection.prepareStatement(sql);
-            pstmt.setString(1, countryName);
-            
-            ResultSet result = pstmt.executeQuery();
-            
-            while(result.next()) {
-                
-                EmployeeData employee = new EmployeeData(
-                    result.getString("employeeId"),
-                    result.getString("firstName"),
-                    result.getString("lastName")
-                );
-                vec.addElement(employee);
-            }
-        } catch(SQLException e) {
-            e.printStackTrace();
-            System.out.println("Error in getProjectEmployeeList: " + sql + " Exception: " + e);
-        }
-        return vec;
-    }
-    
     public static EmployeeData getEmployee(Connection connection, String employeeId){
         
         String sql = "SELECT firstName, lastName, hireDate, phone, mail FROM Employees WHERE employeeId=?";
@@ -170,32 +139,41 @@ public class EmployeeData{
         }
         
         return employee;
+		
         
     }
     
     public static int updateEmployee(Connection connection, EmployeeData employee){
-        
+        //ESCRIBIR SQL!!!!
         String sql="UPDATE Employees";
         sql += "SET firstName=?, lastName=?, hireDate=?, phone=?, mail=?";
         sql += "WHERE employeeId=?";
         System.out.println("updateEmployee: " + sql);
         
+		System.out.println(employee.strHireDate);
+		
         int n = 0;
         
         try {
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			java.util.Date utilHireDate = formatter.parse(employee.strHireDate);
+			java.sql.Date sqlHireDate = new java.sql.Date(utilHireDate.getTime());
+			
             PreparedStatement stmtUpdate= connection.prepareStatement(sql);
             stmtUpdate.setString(1,employee.firstName);
             stmtUpdate.setString(2,employee.lastName);
-            stmtUpdate.setDate(3,employee.hireDate);
+            stmtUpdate.setDate(3,sqlHireDate);
             stmtUpdate.setString(4,employee.phone);
             stmtUpdate.setString(5,employee.mail);
-            stmtUpdate.setString(6,employee.employeeId);
 
             n = stmtUpdate.executeUpdate();
             stmtUpdate.close();
         } catch(SQLException e){
             e.printStackTrace();
             System.out.println("Error in updateEmployee: " + sql + " Exception: " + e);   
+        }  catch(ParseException p) {
+            p.printStackTrace();
+            System.out.println("Error in updateEmployee: " + sql + " Exception: " + p);
         }
         return n;
     }
@@ -233,22 +211,30 @@ public class EmployeeData{
     }
     
     public static int insertEmployeeQualification(Connection connection, String employeeId, String qualificationId, String qualificationDate) {
-        String sql="INSERT INTO EmployeeQualificatons (employeeId, qualificationId, qualificationDate)";
+		
+		String sql="INSERT INTO EmployeeQualifications (employeeId, qualificationId, qualificationDate)";
         sql += "VALUES (?,?,?)";
         System.out.println("insertEmployeeQualifications: " + sql);
         
         int n = 0; 
         
         try {
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");		
+			java.util.Date utilQualificationDate = formatter.parse(qualificationDate);
+			java.sql.Date sqlQualificationDate = new java.sql.Date(utilQualificationDate.getTime());
+		
             PreparedStatement stmtUpdate= connection.prepareStatement(sql);
             stmtUpdate.setString(1,employeeId);
             stmtUpdate.setString(2,qualificationId);
-            stmtUpdate.setString(3,qualificationDate); //Duda con date
+            stmtUpdate.setDate(3,sqlQualificationDate); //Date
             n = stmtUpdate.executeUpdate();
             stmtUpdate.close();
         } catch(SQLException e) {
             e.printStackTrace();
             System.out.println("Error in insertEmployeeQualification: " + sql + " Exception: " + e);
+        } catch(ParseException p) {
+            p.printStackTrace();
+            System.out.println("Error in insertEmployeeQualification: " + sql + " Exception: " + p);
         }
         return n;
         
