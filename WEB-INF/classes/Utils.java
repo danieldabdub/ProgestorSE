@@ -51,6 +51,25 @@ public class Utils {
     
     public static String footer(){
         StringBuilder str = new StringBuilder();
+        str.append("<div style='text-align: right;' class='navbar'>");
+        str.append("<a href='#'><b>About Us</b></a>");
+        str.append("<a href='Search.html'>Search</a>");
+        str.append("<a href='Notifications'>Notifications</a>");
+        str.append("<a href='Dashboard'>Dashboard</a>");
+        str.append("<a href='ProjectList'>Projects</a>");
+        str.append("<a href='ClientList'>Clients</a>");
+        str.append("<a href='EmployeeList'>Employees</a>");
+        str.append("<a href='QualificationList'>Qualifications</a>");
+        str.append("<p> <font color='white'>Sancho el sabio nº8 8 Izq. </font></p>");
+        str.append("<p> <font color='white'>654-321-000 </font></p>");
+        str.append("<p> <font color='white'>help@progestor.es</font></p>");
+        return str.toString();
+		
+		
+    }
+	
+	public static String footerD(){
+        StringBuilder str = new StringBuilder();
         str.append("<div style='text-align: right;' class='navbardash'>");
         str.append("<a href='#'><b>About Us</b></a>");
         str.append("<a href='Search.html'>Search</a>");
