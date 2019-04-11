@@ -121,6 +121,66 @@
         <servlet-class>ProjectNew</servlet-class>
     </servlet>
 	
+	<servlet>
+        <servlet-name>EmployeeProjects</servlet-name>
+        <servlet-class>EmployeeProjects</servlet-class>
+    </servlet>	
+
+	<servlet>
+        <servlet-name>EmployeeCountries</servlet-name>
+        <servlet-class>EmployeeCountries</servlet-class>
+    </servlet>		
+	
+	<servlet>
+        <servlet-name>QualifEmployees</servlet-name>
+        <servlet-class>QualifEmployees</servlet-class>
+    </servlet>	
+
+	<servlet>
+        <servlet-name>ClientProjects</servlet-name>
+        <servlet-class>ClientProjects</servlet-class>
+    </servlet>	
+	
+	<servlet>
+        <servlet-name>CountryEdit</servlet-name>
+        <servlet-class>CountryEdit</servlet-class>
+    </servlet>
+
+	<servlet>
+        <servlet-name>CountryList</servlet-name>
+        <servlet-class>CountryList</servlet-class>
+    </servlet>
+
+	<servlet>
+        <servlet-name>CountryUpdate</servlet-name>
+        <servlet-class>CountryUpdate</servlet-class>
+    </servlet>
+	
+	<servlet>
+        <servlet-name>CountryView</servlet-name>
+        <servlet-class>CountryView</servlet-class>
+    </servlet>	
+
+	<servlet>
+        <servlet-name>ClientEdit</servlet-name>
+        <servlet-class>ClientEdit</servlet-class>
+    </servlet>	
+
+	<servlet>
+        <servlet-name>ClientUpdate</servlet-name>
+        <servlet-class>ClientUpdate</servlet-class>
+    </servlet>	
+	
+	<servlet>
+        <servlet-name>CountryEmployees</servlet-name>
+        <servlet-class>CountryEmployees</servlet-class>
+    </servlet>
+
+	<servlet>
+        <servlet-name>ProjectEmployees</servlet-name>
+        <servlet-class>ProjectEmployees</servlet-class>
+    </servlet>
+	
     <servlet-mapping>
         <servlet-name>CheckLogin</servlet-name>
         <url-pattern>/CheckLogin</url-pattern>
@@ -241,6 +301,63 @@
         <url-pattern>/ProjectNew</url-pattern>
     </servlet-mapping>
 	
+	<servlet-mapping>
+        <servlet-name>EmployeeProjects</servlet-name>
+        <url-pattern>/EmployeeProjects</url-pattern>
+    </servlet-mapping>
+	
+	<servlet-mapping>
+        <servlet-name>EmployeeCountries</servlet-name>
+        <url-pattern>/EmployeeCountries</url-pattern>
+    </servlet-mapping>		
+		
+	<servlet-mapping>
+        <servlet-name>QualifEmployees</servlet-name>
+        <url-pattern>/QualifEmployees</url-pattern>
+    </servlet-mapping>		
 
+	<servlet-mapping>
+        <servlet-name>ClientProjects</servlet-name>
+        <url-pattern>/ClientProjects</url-pattern>
+    </servlet-mapping>
 
+	<servlet-mapping>
+        <servlet-name>CountryEdit</servlet-name>
+        <url-pattern>/CountryEdit</url-pattern>
+    </servlet-mapping>
+	
+	<servlet-mapping>
+        <servlet-name>CountryList</servlet-name>
+        <url-pattern>/CountryList</url-pattern>
+    </servlet-mapping>
+	
+	<servlet-mapping>
+        <servlet-name>CountryUpdate</servlet-name>
+        <url-pattern>/CountryUpdate</url-pattern>
+    </servlet-mapping>
+	
+	<servlet-mapping>
+        <servlet-name>CountryView</servlet-name>
+        <url-pattern>/CountryView</url-pattern>
+    </servlet-mapping>
+
+	<servlet-mapping>
+        <servlet-name>ClientEdit</servlet-name>
+        <url-pattern>/ClientEdit</url-pattern>
+    </servlet-mapping>
+	
+	<servlet-mapping>
+        <servlet-name>ClientUpdate</servlet-name>
+        <url-pattern>/ClientUpdate</url-pattern>
+    </servlet-mapping>
+		
+	<servlet-mapping>
+        <servlet-name>CountryEmployees</servlet-name>
+        <url-pattern>/CountryEmployees</url-pattern>
+    </servlet-mapping>
+
+	<servlet-mapping>
+        <servlet-name>ProjectEmployees</servlet-name>
+        <url-pattern>/ProjectEmployees</url-pattern>
+    </servlet-mapping>	
 </web-app>

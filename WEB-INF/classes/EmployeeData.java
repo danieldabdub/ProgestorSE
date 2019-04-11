@@ -86,7 +86,7 @@ public class EmployeeData{
         
         
         String sql = "SELECT ProjectEmployee.employeeId as employeeId, firstName, lastName FROM ProjectEmployee, Employees";
-        sql += "WHERE ProjectEmployee.employeeId=Employees.employeeId AND projectId=?";
+        sql += " WHERE ProjectEmployee.employeeId=Employees.employeeId AND projectId=?";
         System.out.println("getProjectEmployeeList: " + sql);
         
         try {
