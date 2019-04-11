@@ -22,7 +22,6 @@ public class ClientList extends HttpServlet {
 		toClient.println("<tr>");
 		toClient.println("<th>Client ID</th>");
 		toClient.println("<th>Company Name</th>");
-		toClient.println("</thead>");
 		
 		
         Vector<ClientData> ClientList;
@@ -30,13 +29,14 @@ public class ClientList extends HttpServlet {
         for(int i=0; i< ClientList.size(); i++){
                 ClientData client =ClientList.elementAt(i);
                 toClient.println("<tr>");
-				toClient.println("<td><a href='ClientView?id=" + client.clientId + "'>"+ client.clientId +"</a></td>");
+				toClient.println("<td><a href='ClientView?clientId=" + client.clientId + "'>"+ client.clientId +"</a></td>");
                 toClient.println("<td>" + client.companyName + " </td>");
                 toClient.println("</tr>");
 
 
         }
 		
+		toClient.println(Utils.footer());
 		toClient.println("</tbody>");
 		toClient.println("</tr>");
         toClient.println("</table>");
@@ -46,7 +46,6 @@ public class ClientList extends HttpServlet {
 		toClient.println("</div>");
 		toClient.println("</form>");
 		toClient.println("</body>");
-		toClient.println(Utils.footer());
         toClient.close();
     }
 }

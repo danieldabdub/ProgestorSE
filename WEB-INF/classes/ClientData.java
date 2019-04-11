@@ -105,8 +105,8 @@ public class ClientData{
     
     public static int updateClient(Connection connection, ClientData client){
         
-        String sql="UPDATE Clients";
-        sql += "SET companyName=?, countryHq=?, contact=?, phone=?, mail=?";
+        String sql="UPDATE Clients ";
+        sql += "SET companyName=?, countryHq=?, contact=?, phone=?, mail=? ";
         sql += "WHERE clientId=?";
         System.out.println("updateClient: " + sql);
         
