@@ -21,7 +21,7 @@ public class ManagerData{
     
     // Primer Constructor: - getProjectList
     
-    ProjectData (String managerId, String first, String last){
+    ManagerData (String managerId, String first, String last){
         
         this.managerId = managerId;
         this.last = last;

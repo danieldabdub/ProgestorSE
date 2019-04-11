@@ -104,7 +104,22 @@
 	<servlet>
         <servlet-name>EmployeeEdit</servlet-name>
         <servlet-class>EmployeeEdit</servlet-class>
-    </servlet>		
+    </servlet>	
+
+	<servlet>
+        <servlet-name>ProjectInsert</servlet-name>
+        <servlet-class>ProjectInsert</servlet-class>
+    </servlet>	
+	
+	<servlet>
+        <servlet-name>ManagerData</servlet-name>
+        <servlet-class>ManagerData</servlet-class>
+    </servlet>
+	
+	<servlet>
+        <servlet-name>ProjectNew</servlet-name>
+        <servlet-class>ProjectNew</servlet-class>
+    </servlet>
 	
     <servlet-mapping>
         <servlet-name>CheckLogin</servlet-name>
@@ -210,6 +225,21 @@
         <servlet-name>EmployeeEdit</servlet-name>
         <url-pattern>/EmployeeEdit</url-pattern>
     </servlet-mapping>		
+	
+	<servlet-mapping>
+        <servlet-name>ProjectInsert</servlet-name>
+        <url-pattern>/ProjectInsert</url-pattern>
+    </servlet-mapping>
+	
+	<servlet-mapping>
+        <servlet-name>ManagerData</servlet-name>
+        <url-pattern>/ManagerData</url-pattern>
+    </servlet-mapping>
+	
+	<servlet-mapping>
+        <servlet-name>ProjectNew</servlet-name>
+        <url-pattern>/ProjectNew</url-pattern>
+    </servlet-mapping>
 	
 
 

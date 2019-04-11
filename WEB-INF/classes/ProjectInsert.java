@@ -24,19 +24,19 @@ public class ProjectInsert extends HttpServlet {
 		
 		toClient.println(Utils.header("New Project "));
 		
-        toClient.println("<form action=' ' method='GET'>");
+        toClient.println("<form action='ProjectNew' method='GET'>");
 		
         toClient.println("<table id='newProjectTable' class='Table1'>");
-        toClient.println("<tr><td>ProjectId</td>");
-        toClient.println("<td><input ></td></tr>");
+        toClient.println("<tr><td>ProjectId name='projectId'</td>");
+        toClient.println("<td><input></input></td></tr>");
         
 		toClient.println("<tr><td>Client</td>");
-        toClient.println("<td><select id='companyName'></td></tr>");
+        toClient.println("<td><select id='companyName' name='clientId'></select></td></tr>");
 		toClient.println("<input type='hidden' id='selectedClient' name='selectedClientId'>");
 		
 		
 		toClient.println("<tr><td>Manager</td>");
-        toClient.println("<td><select id='manager'></select></td>");
+        toClient.println("<td><select id='manager' ></select></td>");
 		toClient.println("<input type='hidden' id='selectedManager' name='selectedManagerId'>");		
 		
         toClient.println("<tr><td>Start Date</td>");
@@ -61,13 +61,12 @@ public class ProjectInsert extends HttpServlet {
 		toClient.println("</div>");
         toClient.println("</form>");
 		
-        toClient.println(Utils.footer());
-        toClient.close();
-    }
+        //toClient.println(Utils.footer());
+        //toClient.close();
 	
-	     toClient.print("<script>clientName=[");
-        Vector<ProjectData> clientsList = ClientData.getClientList(connection);
-        for(int i=0; i< clientsList.size(); i++){
+	    toClient.print("<script>clientName=[");
+        Vector<ClientData> clientsList = ClientData.getClientList(connection);
+        for(int i=0; i<clientsList.size(); i++){
                 ClientData client = clientsList.elementAt(i);
                 if (i!=0) {
                     toClient.print(",");
@@ -77,10 +76,10 @@ public class ProjectInsert extends HttpServlet {
                 toClient.print(",\"companyName\":\"" + client.companyName + "\"");
                 toClient.print(",\"countryHq\":\"" + client.countryHq + "\"");
                 toClient.print("}");
-        }
+		}
+		
         toClient.println("]</script>");
-        
-        toClient.println("<script src=addInfo.js></script>");
+        toClient.println("<script src=AddInfo.js></script>");
 		
 		
 		 toClient.print("<script>managerName=[");
@@ -97,7 +96,8 @@ public class ProjectInsert extends HttpServlet {
         }
         toClient.println("]</script>");
         
-        toClient.println("<script src=addInfo.js></script>");
-	
-	
+        toClient.println("<script src=AddInfo.js></script>");
+		toClient.println(Utils.footer());
+		toClient.close();
+	}
 }
